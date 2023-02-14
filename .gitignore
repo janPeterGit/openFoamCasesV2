@@ -1,0 +1,35 @@
+# ignore files ending
+*.gz
+*.eMesh
+*.OpenFOAM
+*.zip
+*Bin.dat
+
+# ignore files beginning
+*.log
+log.*
+*~
+log
+
+# ignore files
+#constant/extendedFeatureEdgeMesh
+#constant/cellToRegion
+**/polyMesh/*
+
+# ignore folder
+# postProcessing
+exportData
+
+# ignore folder beginning
+processor*
+[0-9]*
+[0-9]*.[0-9]*
+
+# exclude
+!0
+!0.orig
+!postProcessing
+#!sampleDict/**/*.raw
+#!constant/polyMesh/blockMeshDict
+
+
