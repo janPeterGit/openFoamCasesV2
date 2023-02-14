@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Remove surface and features
+rm -f constant/triSurface/cylinder.eMesh*
+rm -r constant/extendedFeatureEdgeMesh
+rm -r proc*
+rm -r postProc*
+rm -r constant/polyMesh
+rm -f log*
+rm -f 0/cellLeve*
+rm -f 0/pointLeve*
+rm -f 0/Cx
+rm -f 0/Cy
+rm -f 0/Cz
+rm -f 0/inletU
+
+#------------------------------------------------------------------------------
