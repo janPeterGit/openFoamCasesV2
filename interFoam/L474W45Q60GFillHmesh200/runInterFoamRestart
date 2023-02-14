@@ -1,0 +1,24 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+
+#runApplication cartesianMesh
+
+killall interFoam
+
+#cp system/simpleTemplate/controlDict system/controlDict
+#cp system/simpleTemplate/fvSchemes system/fvSchemes
+#cp system/simpleTemplate/fvSolution system/fvSolution
+
+
+rm -f log.mpirun
+runApplication mpirun -np 24 interFoam -parallel
+#runApplication paraFoam &
+
+rm -f log.reconstructPar
+runApplication reconstructPar -latestTime
+#rm -r proc*
+
+runApplication postProcess -func "flowRatePatch(name=inlet)" -latestTime
+#runApplication postProcess -func sampleDict2 -latestTime
+#------------------------------------------------------------------------------

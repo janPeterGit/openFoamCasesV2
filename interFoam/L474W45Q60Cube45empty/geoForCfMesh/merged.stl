@@ -1,0 +1,196 @@
+solid bottom
+facet normal 0.000000 0.000000 1.000000
+outer loop
+vertex -2.000000 -0.395000 0.000000
+vertex 3.000000 -0.395000 0.000000
+vertex 3.000000 0.395000 0.000000
+endloop
+endfacet
+facet normal 0.000000 0.000000 1.000000
+outer loop
+vertex -2.000000 -0.395000 0.000000
+vertex 3.000000 0.395000 0.000000
+vertex -2.000000 0.395000 0.000000
+endloop
+endfacet
+endsolid bottom
+solid cylinder
+facet normal -0.707107 -0.707107 0.000000
+outer loop
+vertex 0.149907 -0.185262 0.000000
+vertex 0.149907 -0.185262 0.050000
+vertex -0.185262 0.149907 0.050000
+endloop
+endfacet
+facet normal -0.707107 -0.707107 0.000000
+outer loop
+vertex 0.149907 -0.185262 0.000000
+vertex -0.185262 0.149907 0.050000
+vertex -0.185262 0.149907 0.000000
+endloop
+endfacet
+facet normal -0.707107 0.707107 0.000000
+outer loop
+vertex -0.185262 0.149907 0.000000
+vertex -0.185262 0.149907 0.050000
+vertex -0.149907 0.185262 0.050000
+endloop
+endfacet
+facet normal -0.707107 0.707107 0.000000
+outer loop
+vertex -0.185262 0.149907 0.000000
+vertex -0.149907 0.185262 0.050000
+vertex -0.149907 0.185262 0.000000
+endloop
+endfacet
+facet normal 0.707107 0.707107 0.000000
+outer loop
+vertex -0.149907 0.185262 0.000000
+vertex -0.149907 0.185262 0.050000
+vertex 0.185262 -0.149907 0.050000
+endloop
+endfacet
+facet normal 0.707107 0.707107 0.000000
+outer loop
+vertex -0.149907 0.185262 0.000000
+vertex 0.185262 -0.149907 0.050000
+vertex 0.185262 -0.149907 0.000000
+endloop
+endfacet
+facet normal 0.707107 -0.707107 0.000000
+outer loop
+vertex 0.185262 -0.149907 0.000000
+vertex 0.185262 -0.149907 0.050000
+vertex 0.149907 -0.185262 0.050000
+endloop
+endfacet
+facet normal 0.707107 -0.707107 0.000000
+outer loop
+vertex 0.185262 -0.149907 0.000000
+vertex 0.149907 -0.185262 0.050000
+vertex 0.149907 -0.185262 0.000000
+endloop
+endfacet
+facet normal 0.000000 0.000000 -1.000000
+outer loop
+vertex -0.185262 0.149907 0.000000
+vertex -0.149907 0.185262 0.000000
+vertex 0.185262 -0.149907 0.000000
+endloop
+endfacet
+facet normal 0.000000 0.000000 -1.000000
+outer loop
+vertex -0.185262 0.149907 0.000000
+vertex 0.185262 -0.149907 0.000000
+vertex 0.149907 -0.185262 0.000000
+endloop
+endfacet
+facet normal 0.000000 0.000000 1.000000
+outer loop
+vertex -0.149907 0.185262 0.050000
+vertex -0.185262 0.149907 0.050000
+vertex 0.149907 -0.185262 0.050000
+endloop
+endfacet
+facet normal -0.000000 0.000000 1.000000
+outer loop
+vertex -0.149907 0.185262 0.050000
+vertex 0.149907 -0.185262 0.050000
+vertex 0.185262 -0.149907 0.050000
+endloop
+endfacet
+endsolid cylinder
+solid frontAndBack
+facet normal 0.000000 -1.000000 0.000000
+outer loop
+vertex -2.000000 0.395000 0.000000
+vertex 3.000000 0.395000 0.000000
+vertex 3.000000 0.395000 0.2500000
+endloop
+endfacet
+facet normal 0.000000 -1.000000 0.000000
+outer loop
+vertex -2.000000 0.395000 0.000000
+vertex 3.000000 0.395000 0.2500000
+vertex -2.000000 0.395000 0.2500000
+endloop
+endfacet
+facet normal 0.000000 -1.000000 0.000000
+outer loop
+vertex -2.000000 -0.395000 -0.000000
+vertex 3.000000 -0.395000 -0.000000
+vertex 3.000000 -0.395000 0.2500000
+endloop
+endfacet
+facet normal 0.000000 -1.000000 0.000000
+outer loop
+vertex -2.000000 -0.395000 -0.000000
+vertex 3.000000 -0.395000 0.2500000
+vertex -2.000000 -0.395000 0.2500000
+endloop
+endfacet
+endsolid frontAndBack
+solid inlet
+facet normal 1.000000 0.000000 0.000000
+outer loop
+vertex -2.000000 -0.395000 0.2500000
+vertex -2.000000 -0.395000 0.000000
+vertex -2.000000 0.395000 0.000000
+endloop
+endfacet
+facet normal 1.000000 0.000000 0.000000
+outer loop
+vertex -2.000000 -0.395000 0.2500000
+vertex -2.000000 0.395000 0.000000
+vertex -2.000000 0.395000 0.2500000
+endloop
+endfacet
+endsolid inlet
+solid outletAir
+facet normal 1.000000 0.000000 0.000000
+outer loop
+vertex 3.000000 -0.395000 0.2500000
+vertex 3.000000 -0.395000 0.093000
+vertex 3.000000 0.395000 0.093000
+endloop
+endfacet
+facet normal 1.000000 0.000000 0.000000
+outer loop
+vertex 3.000000 -0.395000 0.2500000
+vertex 3.000000 0.395000 0.093000
+vertex 3.000000 0.395000 0.2500000
+endloop
+endfacet
+endsolid outletAir
+solid outletWater
+facet normal 1.000000 0.000000 0.000000
+outer loop
+vertex 3.000000 -0.395000 0.093000
+vertex 3.000000 -0.395000 0.000000
+vertex 3.000000 0.395000 0.000000
+endloop
+endfacet
+facet normal 1.000000 0.000000 0.000000
+outer loop
+vertex 3.000000 -0.395000 0.093000
+vertex 3.000000 0.395000 0.000000
+vertex 3.000000 0.395000 0.093000
+endloop
+endfacet
+endsolid outletWater
+solid top
+facet normal 0.000000 0.000000 1.000000
+outer loop
+vertex -2.000000 -0.395000 0.2500000
+vertex 3.000000 -0.395000 0.2500000
+vertex 3.000000 0.395000 0.250000
+endloop
+endfacet
+facet normal 0.000000 0.000000 1.000000
+outer loop
+vertex -2.000000 -0.395000 0.250000
+vertex 3.000000 0.395000 0.250000
+vertex -2.000000 0.395000 0.250000
+endloop
+endfacet
+endsolid top

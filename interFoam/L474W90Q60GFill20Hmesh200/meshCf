@@ -1,0 +1,20 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+
+cp -r 0.orig/ 0
+
+rm -r postProc*
+rm -r constant/polyMesh
+rm -f log*
+
+#cp system/simpleTemplate/controlDict system/controlDict
+
+runApplication cartesianMesh
+runApplication postProcess -func writeCellCentres
+runApplication checkMesh -writeAllFields -writeSets vtk
+
+rm -f 0/C
+rm -f constant/C
+
+#------------------------------------------------------------------------------

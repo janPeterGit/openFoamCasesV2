@@ -1,0 +1,62 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1906                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    location    "0";
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#include        "include/initialConditions"
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    inlet
+    {
+        type            variableHeightFlowRateInletVelocity;
+        flowRate        $inletFlowRate; // m3/s
+        alpha           alpha.water;
+        value           uniform (0 0 0); 
+    }
+		
+	outletWater
+    {
+        type            pressureInletOutletVelocity;    // This velocity inlet/outlet boundary condition is applied to patches where the pressure is specified
+        value           uniform (0 0 0); // for outflow: zero-gradient condition
+    }												    // for inflow:  the velocity is obtained from the patch-face normal component of the internal-cell value
+													    
+	outletAir
+    {
+        type            pressureInletOutletVelocity;    
+        value           uniform (0 0 0);    
+    }
+	
+	top
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
+    }
+	
+	"(bottom|frontAndBack|cylinder)"
+    {
+        type            noSlip;			// This boundary condition fixes the velocity to zero at walls
+    }
+	
+	
+	
+}
+
+
+// ************************************************************************* //
