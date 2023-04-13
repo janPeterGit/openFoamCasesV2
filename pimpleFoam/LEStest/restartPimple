@@ -6,6 +6,9 @@ cd "${0%/*}" || exit                                # Run from this directory
 
 killall pimpleFoam
 
+#rm -r proc*
+
+#rm -f log.decomposePar
 rm -f log.mpirun
 runApplication mpirun -np 24 pimpleFoam -parallel
 #runApplication paraFoam &

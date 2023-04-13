@@ -1,0 +1,32 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+
+#runApplication cartesianMesh
+
+killall pimpleFoam
+
+cp system/pimpleTemplate/controlDict system/controlDict
+cp system/pimpleTemplate/fvSchemes system/fvSchemes
+cp system/pimpleTemplate/fvSolution system/fvSolution
+
+cp constant/templateLES/turbulenceProperties constant/turbulenceProperties
+
+rm -f 0/Cx
+rm -f 0/Cy
+rm -f 0/Cz
+rm -f 0/inletU
+rm -r proc*
+rm -r postPr*
+rm -f log.decomposePar
+runApplication decomposePar
+
+rm -f log.mpirun
+runApplication mpirun -np 24 pimpleFoam -parallel
+#runApplication paraFoam &
+
+rm -f log.reconstructPar
+runApplication reconstructPar -latestTime
+#rm -r proc*
+
+#------------------------------------------------------------------------------

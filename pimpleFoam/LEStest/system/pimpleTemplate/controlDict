@@ -48,8 +48,8 @@ runTimeModifiable true;
 
 // Time step control
 adjustTimeStep  yes;
-maxCo           20;
-maxAlphaCo      20;
+maxCo           1;
+maxAlphaCo      1;
 maxDeltaT       0.5;
 
 functions

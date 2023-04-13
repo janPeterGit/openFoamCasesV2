@@ -33,7 +33,7 @@ solvers
         relTol          0;
     };
 
-    "(U|k|B|nuTilda)"
+    "(U|k)"
     {
         solver          smoothSolver;
         smoother        GaussSeidel;
@@ -42,7 +42,7 @@ solvers
     }
 }
 
-PISO
+PIMPLE
 {
     nCorrectors     2;
     nNonOrthogonalCorrectors 0;
