@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "Create Mesh"
+
+cp -r 0.orig/ 0
+
+rm -r postProc*
+rm -r constant/polyMesh
+rm -f log*
+
+cp system/simpleTemplate/controlDict system/controlDict
+
+cartesianMesh > log.cartesianMesh 
+postProcess -func writeCellCentres
+
+rm -f 0/C

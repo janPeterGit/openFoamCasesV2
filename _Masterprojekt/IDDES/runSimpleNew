@@ -1,0 +1,28 @@
+#!/bin/bash
+echo "Start simpleFoam"
+
+killall simpleFoam
+
+cp system/simpleTemplate/controlDict system/controlDict
+cp system/simpleTemplate/fvSchemes system/fvSchemes
+cp system/simpleTemplate/fvSolution system/fvSolution
+
+rm -f 0/Cx
+rm -f 0/Cy
+rm -f 0/Cz
+rm -f 0/inletU
+rm -r proc*
+rm -r postPr*
+rm -f log.decomposePar
+decomposePar > log.decomposePar #&
+
+rm -f log.mpirun
+mpirun -np 6 simpleFoam -parallel > log.mpirun #&
+#paraFoam &
+
+rm -f log.reconstructPar
+reconstructPar #-latestTime
+rm -r proc*
+
+postProcess -func "flowRatePatch(name=inlet)" #-latestTime
+#------------------------------------------------------------------------------

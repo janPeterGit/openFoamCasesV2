@@ -1,0 +1,18 @@
+#!/bin/bash
+echo "Finish All"
+
+killall simpleFoam
+killall pimpleFoam
+
+rm -f log.reconstructPar
+reconstructPar -latestTime
+rm -f log.reconstructPar
+
+postProcess -func "flowRatePatch(name=inlet)" -latestTime
+
+rm -r proc*
+rm -f log.decomposePar
+rm -f log.postProcess
+rm -f log.cartesianMesh
+
+#------------------------------------------------------------------------------

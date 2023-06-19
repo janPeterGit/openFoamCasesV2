@@ -1,0 +1,16 @@
+#!/bin/bash
+echo "Clean All"
+
+rm -f constant/triSurface/cylinder.eMesh*
+rm -r constant/extendedFeatureEdgeMesh
+rm -r proc*
+rm -r postProc*
+rm -r constant/polyMesh
+rm -f log*
+rm -r 0
+rm -f 0/cellLeve*
+rm -f 0/pointLeve*
+rm -f 0/Cx
+rm -f 0/Cy
+rm -f 0/Cz
+rm -f 0/inletU

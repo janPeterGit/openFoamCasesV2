@@ -1,0 +1,27 @@
+#!/bin/bash
+echo "Start pimpleFoam"
+
+killall pimpleFoam
+
+cp system/pimpleTemplate/controlDict system/controlDict
+cp system/pimpleTemplate/fvSchemes system/fvSchemes
+cp system/pimpleTemplate/fvSolution system/fvSolution
+
+rm -f 0/Cx
+rm -f 0/Cy
+rm -f 0/Cz
+rm -f 0/inletU
+rm -r proc*
+#rm -r postPr*
+rm -f log.decomposePar
+decomposePar
+
+#rm -f log.mpirun
+mpirun -np 6 pimpleFoam -parallel > log.mpirun
+#paraFoam &
+
+rm -f log.reconstructPar
+reconstructPar
+rm -r proc*
+
+#------------------------------------------------------------------------------
