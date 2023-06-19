@@ -23,7 +23,7 @@ internalField   uniform 0;
 boundaryField
 {
 
-    "(bottom|frontAndBack|cylinder)"
+    "(bottom|frontAndBack|obstacle)"
     {
         type            zeroGradient;
     }

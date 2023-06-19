@@ -55,7 +55,7 @@ boundaryField
     }
 	
     //"(bottom|frontAndBack)"//|cylinder)"
-    "(cylinder|frontAndBack)"
+    "(obstacle|frontAndBack)"
     {
         type            nutkWallFunction; 
 	    value		    uniform 0;

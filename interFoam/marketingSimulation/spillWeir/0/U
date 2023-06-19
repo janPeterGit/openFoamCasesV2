@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v1906                                 |
-|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|  \\    /   O peration     | Version:  2006                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -15,56 +15,39 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include        "include/initialConditions"
-
 dimensions      [0 1 -1 0 0 0 0];
+
 
 internalField   uniform (0 0 0);
 
 boundaryField
 {
+    bottom
+    {
+        type            noSlip;
+    }
     inlet
     {
         type            variableHeightFlowRateInletVelocity;
-        flowRate        $inletFlowRate; // m3/s
+        flowRate        constant 0.025;
         alpha           alpha.water;
-        value           uniform (0 0 0); 
+        value           uniform (0 0 0);
     }
-
+    obstacle
+    {
+        type            noSlip;
+    }
     outlet
     {
         type            inletOutlet;
         inletValue      uniform (0 0 0);
-        value           $internalField; // uniform (0 0 0)
+        value           uniform (0 0 0);
     }
-	
-    /*
-	outletWater
-    {
-        type            pressureInletOutletVelocity;    // This velocity inlet/outlet boundary condition is applied to patches where the pressure is specified
-        value           uniform (0 0 0); // for outflow: zero-gradient condition
-    }												    // for inflow:  the velocity is obtained from the patch-face normal component of the internal-cell value
-													    
-	outletAir
-    {
-        type            pressureInletOutletVelocity;    
-        value           uniform (0 0 0);    
-    }
-	*/
-
-	top
+    top
     {
         type            pressureInletOutletVelocity;
         value           uniform (0 0 0);
     }
-	
-	"(bottom|frontAndBack|cylinder)"
-    {
-        type            noSlip;			// This boundary condition fixes the velocity to zero at walls
-    }
-	
-	
-	
 }
 
 

@@ -62,7 +62,7 @@ boundaryField
         p0         		uniform 0;											
     }
 	
-	"(bottom|frontAndBack|cylinder)"
+	"(bottom|frontAndBack|obstacle)"
     {
         type            fixedFluxPressure;
         value           uniform 0;

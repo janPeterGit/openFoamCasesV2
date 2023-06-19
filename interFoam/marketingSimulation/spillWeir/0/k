@@ -71,7 +71,7 @@ boundaryField
         value           $internalField;
     }
 	
-	"(bottom|frontAndBack|cylinder)"
+	"(bottom|frontAndBack|obstacle)"
     {
         type            kqRWallFunction;
         value           $internalField;

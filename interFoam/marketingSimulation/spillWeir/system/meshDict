@@ -32,7 +32,7 @@ localRefinement
 	{
        //additionalRefinementLevels 5;
 	   //refinementThickness  0.0251; 
-	   cellSize 1.251E-3; //6.251E-4;
+	   cellSize 2.501E-3; //6.251E-4;
 	}
 	
 	/*
@@ -112,8 +112,8 @@ objectRefinements
 	{
 		type			box;
 		cellSize		0.0051;
-		centre			(0.3	0.25	0.2);
-		lengthX			1;
+		centre			(0.3	0	0.2);
+		lengthX			1.2;
 		lengthY			0.409;
 		lengthZ			0.4;
 	}
