@@ -11,6 +11,8 @@ log.*
 *~
 log
 
+!force.dat
+
 # ignore files
 #constant/extendedFeatureEdgeMesh
 #constant/cellToRegion
@@ -29,7 +31,7 @@ processor*
 !0
 !0.orig
 !postProcessing
-!force.dat
+
 #!sampleDict/**/*.raw
 #!constant/polyMesh/blockMeshDict
 
