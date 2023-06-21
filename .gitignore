@@ -29,6 +29,7 @@ processor*
 !0
 !0.orig
 !postProcessing
+!force.dat
 #!sampleDict/**/*.raw
 #!constant/polyMesh/blockMeshDict
 
