@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 # Read data from file
 data = []
 final_cols = []
-with open("postProcessing/solverInfo/0/solverInfo.dat", "r") as f:
+with open("postProcessing/solverInfo/4049/solverInfo.dat", "r") as f:
     headers = f.readline().strip().split()
     for i, header in enumerate(headers):
         if "_final" in header:
