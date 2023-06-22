@@ -1,0 +1,270 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                |
+| \\      /  F ield         | cfMesh: A library for mesh generation          |
+|  \\    /   O peration     |                                                |
+|   \\  /    A nd           | Author: Franjo Juretic                         |
+|    \\/     M anipulation  | E-mail: franjo.juretic@c-fields.com            |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version   2.0;
+    format    ascii;
+    class     dictionary;
+    location  "system";
+    object    meshDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaceFile "geoForCfMesh/merged.fms";
+
+minCellSize 0.01;
+
+maxCellSize 0.01;
+
+//boundaryCellSize 0.01;
+
+
+//localRefinement
+//{
+//	
+//	"cylinder.*"
+//	{
+//       //additionalRefinementLevels 5;
+//	   //refinementThickness  0.01; 
+//	   cellSize 1.251E-3;//6.251E-4;
+//	}
+//	/*
+//	"frontAndBack.*"
+//	{
+//       //additionalRefinementLevels 5;
+//	   //refinementThickness  0.01; 
+//	   cellSize 5.1E-3;
+//	}
+//	"bottom.*"
+//	{
+//       //additionalRefinementLevels 5;
+//	   //refinementThickness  0.01; 
+//	   cellSize 5.1E-3;
+//	}
+//	*/
+//}
+
+
+/*
+surfaceMeshRefinement
+{
+	//name of the refinement region
+	canopySurface
+	{
+		// path
+		surfaceFile "geo/canopy.stl";
+
+		// add ref lvl
+		additionalRefinementLevels 3;
+
+		// cellSize
+		//cellSize 0.005;
+	}
+}
+*/
+/*
+edgeMeshRefinement
+{
+	//name of the refinement region
+	canopyEdge
+	{
+		// path
+		edgeFile "geo/canopyTest.obj";
+
+		// add ref lvl
+		additionalRefinementLevels 3;
+
+		// cellSize
+		//cellSize 0.005;
+	}
+}
+*/
+/*
+anisotropicSources
+{
+	bottomBox
+	{
+		type box;
+		centre (0 0 0.005);
+		lengthX 10;
+		lengthY 0.98;
+		lengthZ 0.01;
+		
+		scaleX 1;
+		scaleY 1;
+		scaleZ 0.2;
+	}
+}
+*/	
+	
+
+objectRefinements
+{
+	box01
+	{
+		type			box;
+		cellSize		0.0051;
+		centre			(0.25 0	0.1);
+		lengthX			1.5;
+		lengthY			0.79;
+		lengthZ			0.2;
+	}
+
+	box02
+	{
+		type			box;
+		cellSize		0.00251;
+		centre			(0.05	0	0.1);
+		lengthX			0.9;
+		lengthY			0.65;
+		lengthZ			0.2;
+	}
+	/*
+	cone01 // around fixation
+	{
+		type				cone;
+		cellSize			1.251E-3;
+		p0				(0 0 0.05);
+		p1				(0 0 0.15);
+		radius0	0.01;
+		radius1 0.01;
+	}
+
+	cone02 // around fixation
+	{
+		type				cone;
+		cellSize			6.251E-4;
+		p0				(0 0 0.05);
+		p1				(0 0 0.15);
+		radius0	0.006;
+		radius1 0.006;
+	}
+	*/
+	/*
+	box03 // for 2 mm gap below cylinder
+	{
+		type			box;
+		cellSize		6.251E-4;
+		centre			(0	0	0.001);
+		lengthX			0.01;
+		lengthY			0.336;
+		lengthZ			0.002;
+	}
+	*/
+	
+	cone03 // around cylinder
+	{
+		type				cone;
+		cellSize			1.251E-3;// 0.00251;
+		p0				(-0.1729 0.1729 0.027); //0.2445
+		p1				(0.1729 -0.1729 0.027); //0.2445
+		radius0	0.0325;
+		radius1 0.0325;
+	}
+
+	cone04 // around cylinder
+	{
+		type				cone;
+		cellSize			6.251E-4;// 0.00251;
+		p0				(-0.1694 0.1694 0.027); //0.2395
+		p1				(0.1694 -0.1694 0.027); //0.2395
+		radius0	0.0275;
+		radius1 0.0275;
+	}
+	
+	
+}
+
+/*
+boundaryLayers
+{
+	patchBoundaryLayers
+	{
+		
+		"cylinder.*"
+		{
+			nLayers					10;
+			thicknessRatio 			1.5;
+			maxFirstLayerThickness	1.251E-3;;
+			allowDiscontinuity 1;
+        }
+		
+		
+		"bottom.*"
+		{
+			nLayers					4;
+			thicknessRatio 			1.3;
+			//maxFirstLayerThickness	0.0025;
+			allowDiscontinuity 1;
+        }
+		
+		
+    }
+	
+    optimiseLayer 1;
+
+    optimisationParameters
+    {
+        nSmoothNormals                   5;
+        relThicknessTol 		        0.4;
+        featureSizeFactor 		0.8;
+        reCalculateNormals 		1; 
+        maxNumIterations 		5;
+    }
+	
+}
+*/
+
+
+renameBoundary
+{
+	defaultType patch;
+	newPatchNames
+	{
+		bottom
+		{
+			type	wall;
+			newName	bottom;
+		}
+		cylinder
+		{
+			type	wall;
+			newName	cylinder;
+		}
+		frontAndBack
+		{
+			type	wall;
+			newName	frontAndBack;
+		}
+		inlet
+		{
+			type	patch;
+			newName	inlet;
+		}
+		outlet
+		{
+			type	patch;
+			newName	outlet;
+		}
+		top
+		{
+			type	symmetryPlane;
+			newName	top;
+		}
+		/*
+		mount
+		{
+			type	wall;
+			newName	mount;
+		}
+		*/
+	}
+}
+
+// ************************************************************************* //

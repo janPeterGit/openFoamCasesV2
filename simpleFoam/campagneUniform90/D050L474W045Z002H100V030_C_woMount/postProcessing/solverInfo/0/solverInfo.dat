@@ -1,0 +1,5 @@
+# Solver information
+# Time        	p_solver      	p_initial     	p_final       	p_iters       	p_converged   
+1             	GAMG	1.000000e+00	9.900490e-02	7	true
+2             	GAMG	1.506960e-01	1.293150e-02	3	true
+3             	GAMG	2.330910e-01	1.716390e-02	4	true
