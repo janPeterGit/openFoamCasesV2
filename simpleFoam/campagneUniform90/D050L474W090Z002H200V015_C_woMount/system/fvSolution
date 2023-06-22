@@ -42,7 +42,7 @@ SIMPLE
     residualControl
     {
         p               1e-3;//1e-2;
-        U               1e-4;//1e-3;
+        Ux               1e-4;//1e-3;
         //"(k|epsilon|omega|f|v2)" 1e-3; 
     }
 }
