@@ -31,7 +31,7 @@ rm -f constant/C
 
 #---
 
-killall simpleFoam
+#killall simpleFoam
 
 cp system/simpleTemplate/controlDict system/controlDict
 cp system/simpleTemplate/fvSchemes system/fvSchemes
