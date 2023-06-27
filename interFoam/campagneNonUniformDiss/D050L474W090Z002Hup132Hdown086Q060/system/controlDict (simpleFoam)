@@ -24,7 +24,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         4500;
+endTime         5000;
 
 deltaT          1;
 
@@ -63,8 +63,8 @@ functions
         libs            ("libforces.so");
         log              yes;
         patches         (cylinder);
-        writeControl    timeStep;
-        writeInterval   1;
+        writeControl    writeTime;//timeStep;
+        writeInterval   2;
         // Optional entrie
         // Field names
         p               p;
@@ -89,7 +89,38 @@ functions
         }
     }
 
-
+    forcesMount
+    {
+        // Mandatory entries
+        type            forces;
+        libs            ("libforces.so");
+        log              yes;
+        patches         (mount);
+        writeControl    writeTime;//timeStep;
+        writeInterval   2;
+        // Optional entrie
+        // Field names
+        p               p;
+        U               U;
+        rho             rhoInf;
+        rhoInf          1000;
+        // Reference pressure [Pa]
+        pRef            101300;
+        // Include porosity effects?
+        porosity        no;
+        // Store and write volume field representations of forces and moments
+        writeFields     no;
+        // Centre of rotation for moment calculations
+        CofR            (0 0 0);
+        // Spatial data binning
+        // - extents given by the bounds of the input geometry
+        binData
+        {
+            nBin        20;
+            direction   (1 0 0);
+            cumulative  yes;
+        }
+    }
     
     yPlus
     {
