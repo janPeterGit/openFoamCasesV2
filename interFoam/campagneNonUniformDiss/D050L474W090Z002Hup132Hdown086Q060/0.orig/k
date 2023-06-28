@@ -74,13 +74,13 @@ boundaryField
 	"(bottom|frontAndBack)"
     {
         type            kqRWallFunction;
-        value           $kHighRe;
+        value           uniform $kHighRe;
     }
 
     obstacle
     {
         type            kqRWallFunction;
-        value           $kLowRe;
+        value           uniform $kLowRe;
     }
         
 }

@@ -62,13 +62,13 @@ boundaryField
 	"(bottom|frontAndBack)"
     {
         type            omegaWallFunction;
-        value           $omegaHighRe;
+        value           uniform $omegaHighRe;
     }
 
 	obstacle
     {
         type            omegaWallFunction;
-        value           $omegaLowRe;
+        value           uniform $omegaLowRe;
     }
 
     
