@@ -54,8 +54,8 @@ maxDeltaT       1;
 
 // Time step control
 adjustTimeStep  yes;
-maxCo           50;
-maxAlphaCo      50;
+maxCo           75;
+maxAlphaCo      75;
 maxDeltaT       0.1;
 
 
