@@ -1,0 +1,20 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+
+//inletVelocity		    0.3; // m/s
+inletFlowRate           0.06; // m3/s
+pressureHeight        844; // = rho*g*h = 1000*9.81*0,094[m]
+kInlet                  7.47E-08;
+kLowRe                  1E-10; //4.14e-03;
+kHighRe                 5.12E-05;
+//turbulentEpsilon      0.00001; //4.39e-05;
+omegaLowRe		6.41E+05;
+omegaHighRe             3.58E-02;
+omegaInlet              8.21;
+
+// ************************************************************************* //

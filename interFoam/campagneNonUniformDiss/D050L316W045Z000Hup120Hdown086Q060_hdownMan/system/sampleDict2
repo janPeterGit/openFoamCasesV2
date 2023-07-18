@@ -1,0 +1,379 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      sampleDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+type    surfaces;
+
+// Set output format : choice of
+//      xmgr
+//      jplot
+//      gnuplot
+//      raw
+//      vtk
+//      ensight
+//      csv
+setFormat raw;
+
+// Surface output format. Choice of
+//      null        : suppress output
+//      ensight     : Ensight Gold format, one field per case file
+//      foamFile    : separate points, faces and values file
+//      dx          : DX scalar or vector format
+//      vtk         : VTK ascii format
+//      raw         : x y z value format for use with e.g. gnuplot 'splot'.
+//
+// Note:
+// other formats such as obj, stl, etc can also be written (by proxy)
+// but without any values!
+surfaceFormat raw;
+
+// optionally define extra controls for the output formats
+formatOptions
+{
+    ensight
+    {
+        format  ascii;
+    }
+}
+
+// interpolationScheme. choice of
+//      cell          : use cell-centre value only; constant over cells
+//                      (default)
+//      cellPoint     : use cell-centre and vertex values
+//      cellPointFace : use cell-centre, vertex and face values.
+//      pointMVC      : use point values only (Mean Value Coordinates)
+//      cellPatchConstrained : like 'cell' but uses cell-centre except on
+//                             boundary faces where it uses the boundary value.
+//                             For use with e.g. patchCloudSet.
+// 1] vertex values determined from neighbouring cell-centre values
+// 2] face values determined using the current face interpolation scheme
+//    for the field (linear, gamma, etc.)
+interpolationScheme cellPoint;
+
+// Fields to sample.
+fields
+(
+    p
+    p_rgh
+    U
+    alpha.water
+);
+
+// Set sampling definition: choice of
+//      uniform             evenly distributed points on line
+//      face                one point per face intersection
+//      midPoint            one point per cell, inbetween two face intersections
+//      midPointAndFace     combination of face and midPoint
+//
+//      polyLine            specified points, not nessecary on line, uses
+//                          tracking
+//      cloud               specified points, uses findCell
+//      triSurfaceMeshPointSet  points of triSurface
+//
+// axis: how to write point coordinate. Choice of
+// - x/y/z: x/y/z coordinate only
+// - xyz: three columns
+//  (probably does not make sense for anything but raw)
+// - distance: distance from start of sampling line (if uses line) or
+//             distance from first specified sampling point
+//
+// type specific:
+//      uniform, face, midPoint, midPointAndFace : start and end coordinate
+//      uniform: extra number of sampling points
+//      polyLine, cloud: list of coordinates
+//      patchCloud: list of coordinates and set of patches to look for nearest
+//      patchSeed: random sampling on set of patches. Points slightly off
+//                 face centre.
+/*
+sets
+(
+    
+
+);
+*/
+
+// Surface sampling definition
+//
+// 1] patches are not triangulated by default
+// 2] planes are always triangulated
+// 3] iso-surfaces are always triangulated
+surfaces
+(
+    
+
+    
+// ########################################
+    xInfyMinus330zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 -0.33 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyMinus300zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 -0.3 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyMinus270zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 -0.27 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyMinus240zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 -0.24 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyMinus210zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 -0.21 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyMinus180zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 -0.18 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyMinus150zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 -0.15 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyMinus120zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 -0.12 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyMinus90zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 -0.09 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyMinus60zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 -0.06 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyMinus30zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 -0.03 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyPlus0zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyPlus30zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0.03 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyPlus60zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0.06 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyPlus90zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0.09 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyPlus120zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0.12 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyPlus150zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0.15 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyPlus180zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0.18 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyPlus210zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0.21 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyPlus240zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0.24 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyPlus270zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0.27 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyPlus300zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0.3 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+    xInfyPlus330zInf
+    {
+        type            cuttingPlane;
+        planeType       pointAndNormal;
+        pointAndNormalDict
+        {
+            basePoint       (0 0.33 0);
+            normalVector    (0 1 0);
+        }
+        interpolate     true;
+    }
+ 
+// ########################################
+    
+
+    
+);
+
+
+// *********************************************************************** //
