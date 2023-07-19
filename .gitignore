@@ -34,7 +34,7 @@ processor*
 #[0-9]*.[0-9]*
 
 # exclude
-!0
+#!0
 !0.orig
 !postProcessing
 !force.dat
