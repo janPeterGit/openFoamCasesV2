@@ -47,10 +47,10 @@ objectRefinements
 	{
 		type			box;
 		cellSize		0.0051;
-		centre			(1.35	0	0.06);
+		centre			(1.35	0	0.075);
 		lengthX			3.3;
 		lengthY			0.79;
-		lengthZ			0.12;
+		lengthZ			0.15;
 	}
 	
 	
@@ -58,10 +58,10 @@ objectRefinements
 	{
 		type			box;
 		cellSize		0.00251;
-		centre			(1	0	0.025);
+		centre			(1	0	0.015);
 		lengthX			2;
 		lengthY			0.65;
-		lengthZ			0.05;
+		lengthZ			0.03;
 	}
 	
 	/*
