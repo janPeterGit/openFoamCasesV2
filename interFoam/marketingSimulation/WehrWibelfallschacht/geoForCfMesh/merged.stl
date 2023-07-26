@@ -1,3 +1,65 @@
+solid bottom
+facet normal 0.000000 0.000000 -1.000000
+outer loop
+vertex -13.000000 26.000000 0.000000
+vertex 27.000004 26.000000 0.000000
+vertex 27.000004 -10.000000 0.000000
+endloop
+endfacet
+facet normal 0.000000 0.000000 -1.000000
+outer loop
+vertex -13.000000 26.000000 0.000000
+vertex 27.000004 -10.000000 0.000000
+vertex -13.000000 -10.000000 0.000000
+endloop
+endfacet
+endsolid bottom
+solid frontAndBack
+facet normal 1.000000 0.000000 0.000000
+outer loop
+vertex 27.000004 26.000000 0.000000
+vertex 27.000004 26.000000 10.000000
+vertex 27.000004 -10.000000 10.000000
+endloop
+endfacet
+facet normal 1.000000 0.000000 0.000000
+outer loop
+vertex 27.000004 26.000000 0.000000
+vertex 27.000004 -10.000000 10.000000
+vertex 27.000004 -10.000000 0.000000
+endloop
+endfacet
+facet normal -1.000000 0.000000 0.000000
+outer loop
+vertex -13.000000 -10.000000 0.000000
+vertex -13.000000 -10.000000 10.000000
+vertex -13.000000 26.000000 10.000000
+endloop
+endfacet
+facet normal -1.000000 0.000000 0.000000
+outer loop
+vertex -13.000000 -10.000000 0.000000
+vertex -13.000000 26.000000 10.000000
+vertex -13.000000 26.000000 0.000000
+endloop
+endfacet
+endsolid frontAndBack
+solid inlet
+facet normal 0.000000 -1.000000 0.000000
+outer loop
+vertex 27.000004 -10.000000 0.000000
+vertex 27.000004 -10.000000 10.000000
+vertex -13.000000 -10.000000 10.000000
+endloop
+endfacet
+facet normal 0.000000 -1.000000 0.000000
+outer loop
+vertex 27.000004 -10.000000 0.000000
+vertex -13.000000 -10.000000 10.000000
+vertex -13.000000 -10.000000 0.000000
+endloop
+endfacet
+endsolid inlet
 solid obstacle
 facet normal 0.098021 0.995184 0.000000
 outer loop
@@ -9002,3 +9064,35 @@ vertex 0.000000 5.000000 0.000000
 endloop
 endfacet
 endsolid obstacle
+solid outlet
+facet normal 0.000000 1.000000 0.000000
+outer loop
+vertex -13.000000 26.000000 0.000000
+vertex -13.000000 26.000000 10.000000
+vertex 27.000004 26.000000 10.000000
+endloop
+endfacet
+facet normal 0.000000 1.000000 0.000000
+outer loop
+vertex -13.000000 26.000000 0.000000
+vertex 27.000004 26.000000 10.000000
+vertex 27.000004 26.000000 0.000000
+endloop
+endfacet
+endsolid outlet
+solid top
+facet normal 0.000000 0.000000 1.000000
+outer loop
+vertex 27.000004 26.000000 10.000000
+vertex -13.000000 26.000000 10.000000
+vertex -13.000000 -10.000000 10.000000
+endloop
+endfacet
+facet normal 0.000000 0.000000 1.000000
+outer loop
+vertex 27.000004 26.000000 10.000000
+vertex -13.000000 -10.000000 10.000000
+vertex 27.000004 -10.000000 10.000000
+endloop
+endfacet
+endsolid top

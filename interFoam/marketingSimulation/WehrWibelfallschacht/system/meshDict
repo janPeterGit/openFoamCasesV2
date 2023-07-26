@@ -18,9 +18,9 @@ FoamFile
 
 surfaceFile "geoForCfMesh/merged.fms";
 
-minCellSize 0.01;
+minCellSize 0.2;
 
-maxCellSize 0.01;
+maxCellSize 0.2;
 
 //boundaryCellSize 0.01;
 
@@ -32,7 +32,7 @@ localRefinement
 	{
        //additionalRefinementLevels 5;
 	   //refinementThickness  0.0251; 
-	   cellSize 2.501E-3; //6.251E-4;
+	   cellSize 0.101; //6.251E-4;
 	}
 	
 	/*
@@ -51,140 +51,6 @@ localRefinement
 	*/
 }
 
-
-/*
-surfaceMeshRefinement
-{
-	//name of the refinement region
-	canopySurface
-	{
-		// path
-		surfaceFile "geo/canopy.stl";
-
-		// add ref lvl
-		additionalRefinementLevels 3;
-
-		// cellSize
-		//cellSize 0.005;
-	}
-}
-*/
-/*
-edgeMeshRefinement
-{
-	//name of the refinement region
-	canopyEdge
-	{
-		// path
-		edgeFile "geo/canopyTest.obj";
-
-		// add ref lvl
-		additionalRefinementLevels 3;
-
-		// cellSize
-		//cellSize 0.005;
-	}
-}
-*/
-/*
-anisotropicSources
-{
-	bottomBox
-	{
-		type box;
-		centre (0 0 0.005);
-		lengthX 10;
-		lengthY 0.98;
-		lengthZ 0.01;
-		
-		scaleX 1;
-		scaleY 1;
-		scaleZ 0.2;
-	}
-}
-*/	
-	
-
-objectRefinements
-{
-	
-	box01
-	{
-		type			box;
-		cellSize		0.0051;
-		centre			(0.3	0	0.2);
-		lengthX			1.2;
-		lengthY			0.409;
-		lengthZ			0.4;
-	}
-	
-	/*
-	box02
-	{
-		type			box;
-		cellSize		0.00251;
-		centre			(0.2	0	0.075);
-		lengthX			0.6;
-		lengthY			0.65;
-		lengthZ			0.15;
-	}
-	*/
-	/*
-	cone01 // around fixation
-	{
-		type				cone;
-		cellSize			1.251E-3;
-		p0				(0 0 0.05);
-		p1				(0 0 0.15);
-		radius0	0.01;
-		radius1 0.01;
-	}
-
-	cone02 // around fixation
-	{
-		type				cone;
-		cellSize			6.251E-4;
-		p0				(0 0 0.05);
-		p1				(0 0 0.15);
-		radius0	0.006;
-		radius1 0.006;
-	}
-	*/
-	
-	/*
-	box03 // for 2 mm gap below cylinder
-	{
-		type			box;
-		cellSize		6.251E-4;
-		centre			(0	0	0.001);
-		lengthX			0.01;
-		lengthY			0.494;
-		lengthZ			0.002;
-	}
-	*/
-	/*
-	cone03 // around cylinder
-	{
-		type				cone;
-		cellSize			1.251E-3;// 0.00251;
-		p0				(0 -0.2445 0.027);
-		p1				(0 0.2445 0.027);
-		radius0	0.0325;
-		radius1 0.0325;
-	}
-
-	cone04 // around cylinder
-	{
-		type				cone;
-		cellSize			6.251E-4;// 0.00251;
-		p0				(0 -0.2395 0.027);
-		p1				(0 0.2395 0.027);
-		radius0	0.0275;
-		radius1 0.0275;
-	}
-	*/
-	
-}
 
 /*
 boundaryLayers
