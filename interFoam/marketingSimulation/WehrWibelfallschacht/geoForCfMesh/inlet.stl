@@ -1,16 +1,16 @@
-solid inlet
+solid Exported from Blender-3.3.1
 facet normal 0.000000 -1.000000 0.000000
 outer loop
 vertex 27.000004 -10.000000 0.000000
 vertex 27.000004 -10.000000 10.000000
-vertex -13.000000 -10.000000 10.000000
+vertex -0.076120 -10.000000 10.000000
 endloop
 endfacet
 facet normal 0.000000 -1.000000 0.000000
 outer loop
 vertex 27.000004 -10.000000 0.000000
-vertex -13.000000 -10.000000 10.000000
-vertex -13.000000 -10.000000 0.000000
+vertex -0.076120 -10.000000 10.000000
+vertex -0.076120 -10.000000 0.000000
 endloop
 endfacet
-endsolid inlet
+endsolid Exported from Blender-3.3.1
