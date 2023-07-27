@@ -1,4 +1,4 @@
-solid Exported from Blender-3.3.1
+solid obstacle
 facet normal 0.098021 0.995184 0.000000
 outer loop
 vertex -1.000000 -9.000000 6.417991
@@ -8336,4 +8336,4 @@ vertex 25.500002 4.553490 4.465110
 vertex 27.000002 4.000000 10.000000
 endloop
 endfacet
-endsolid Exported from Blender-3.3.1
+endsolid obstacle

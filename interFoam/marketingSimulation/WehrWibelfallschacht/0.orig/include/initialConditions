@@ -6,7 +6,7 @@
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 
-inletFlowRate        0.25; // m3/s
+inletFlowRate        2.5; // m3/s
 //pressureHeight        922; // = rho*g*h = 1000*9.81*0,094[m]
 turbulentKE          0.000021; //4.14e-03;
 //turbulentEpsilon     0.00001; //4.39e-05;

@@ -1,4 +1,4 @@
-solid Exported from Blender-3.3.1
+solid frontAndBack
 facet normal 1.000000 0.000000 0.000000
 outer loop
 vertex 27.000004 26.000000 0.000000
@@ -41,4 +41,4 @@ vertex -13.000000 -10.000000 10.000000
 vertex -13.000000 -10.000000 0.000000
 endloop
 endfacet
-endsolid Exported from Blender-3.3.1
+endsolid frontAndBack
