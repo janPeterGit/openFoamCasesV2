@@ -25,7 +25,29 @@ regions
 (   
     boxToCell
     {
-        box (0 -10 0) (27 1 6);
+        box (-10 -27 0) (2 0 7);
+        fieldValues
+        (
+            volVectorFieldValue U (0 0 0)
+            volScalarFieldValue alpha.water 1
+        );
+        
+    }
+    boxToCell
+    {
+        
+        box (-10 0 0) (14 13 7);
+        fieldValues
+        (
+            volVectorFieldValue U (0 0 0)
+            volScalarFieldValue alpha.water 1
+        );
+        
+    }
+    boxToCell
+    {
+        
+        box (3 -27 0) (26 13 1);
         fieldValues
         (
             volVectorFieldValue U (0 0 0)
