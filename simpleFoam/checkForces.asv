@@ -4,7 +4,7 @@ close all
 
 B = 0.79;
 gravity = 9.81;
-density = 1000;
+densitiy = 1000;
 
 matlabFolder = pwd;
 
@@ -93,7 +93,7 @@ for i = 1:length(cases)
         exportgraphics(f,figureName,'Resolution',200)
 
 
-%         pause(1)
+        pause(1)
         %         close all
         cd(mainFolder)
 
@@ -115,15 +115,8 @@ end
 
 close all
 
-%%
-
 forcesOF.xPressurePortion = forcesOF.xPressure ./ forcesOF.xTotal .*100;
 forcesOF.xViscousPortion = forcesOF.xViscous ./ forcesOF.xTotal .*100;
-
-forcesOF.Aref = sind(forcesOF.gamma).* forcesOF.L .* forcesOF.D + cosd(forcesOF.gamma) .* pi() ./ 4 .* forcesOF.D.^2;
-forcesOF.BR = forcesOF.Aref ./ (forcesOF.h .*B);
-
-forcesOF.CDBR = 2 * forcesOF.xTotal ./(density * forcesOF.v.^2 .* forcesOF.Aref .* (1-forcesOF.BR).^-2);
 
 %%
 font = 'Arial';
@@ -135,7 +128,7 @@ font = 'Arial';
         f.Name = 'Forces Specific Momentum';
         f.Color = [1 1 1];
         f.Units = 'centimeters';
-        f.InnerPosition = [5 5 7.2 7];
+        f.InnerPosition = [5 5 12 10];
         f.WindowState = 'normal'; %fullscreen, minimize, normal, maximize
 
 color1 = [0 0.4470 0.7410];
@@ -152,7 +145,7 @@ ylabel('Druckkraftanteil in \%',Interpreter='latex');
 set(gca, 'YColor', color1); % Set the y-axis color to match the plot
 
 yyaxis right; % Use the right y-axis for the second set of data points
-plotViscous = plot(forcesOF.gamma,forcesOF.xViscousPortion, 'r-^'); % Plot the second set of data points with red stars
+plotViscous = plot(forcesOF.gamma,forcesOF.xViscousPortion, 'r-s'); % Plot the second set of data points with red stars
 plotViscous.Color = color2;
 plotViscous.DisplayName = "Reibungskraft";
 
@@ -177,38 +170,24 @@ font = 'Arial';
         f.Name = 'Forces Specific Momentum';
         f.Color = [1 1 1];
         f.Units = 'centimeters';
-        f.InnerPosition = [5 5 7.2 7];
+        f.InnerPosition = [5 5 12 10];
         f.WindowState = 'normal'; %fullscreen, minimize, normal, maximize
 
 color1 = [0 0.4470 0.7410];
 color2 = [0.8500 0.3250 0.0980];
-color3 = [0.4660 0.6740 0.1880];
-color4 = [0.4940 0.1840 0.5560];
 
 hold on
-yyaxis left; % Use the left y-axis for the first set of data points
-plotPressure = plot(forcesOF.gamma,forcesOF.xTotal, 'b-s'); % Plot the first set of data points with blue circles
+plotPressure = plot(forcesOF.gamma,forcesOF.xPressurePortion, 'b-o'); % Plot the first set of data points with blue circles
 plotPressure.Color = color3;
-plotPressure.DisplayName = "Druckkraft";
-
-% Customize the left y-axis
-ylabel('$F_x$',Interpreter='latex');
-set(gca, 'YColor', color3); % Set the y-axis color to match the plot
-
-yyaxis right; % Use the right y-axis for the second set of data points
-plotViscous = plot(forcesOF.gamma,forcesOF.CDBR, 'r-v'); % Plot the second set of data points with red stars
-plotViscous.Color = color4;
-plotViscous.DisplayName = "Reibungskraft";
 
 % Customize the right y-axis
-ylabel('$C_{D,BR}$',Interpreter='latex');
-set(gca, 'YColor', color4); % Set the y-axis color to match the plot
+ylabel('F_{gesamt} in N',Interpreter='latex');
 xlabel('$\gamma$ in $^\circ$',Interpreter='latex');
 grid on
 box off
 
 set(gca,'TickLabelInterpreter','latex')
-% legend(Interpreter="latex",Location="east")
+legend(Interpreter="latex",Location="east")
 
 %% functions
 
