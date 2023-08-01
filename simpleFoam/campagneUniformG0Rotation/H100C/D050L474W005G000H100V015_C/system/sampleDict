@@ -65,8 +65,11 @@ interpolationScheme cellPoint;
 // Fields to sample.
 fields
 (
-    p
-    U
+    	p
+   	U
+	k
+	omega
+
 );
 
 // Set sampling definition: choice of
@@ -111,14 +114,14 @@ surfaces
 (
     
 
-    xInfyInfz27
+    xInfyInfz25
     {
         // Cutingplane using iso surface
         type            cuttingPlane;
         planeType       pointAndNormal;
         pointAndNormalDict
         {
-            basePoint       (0 0 0.027);
+            basePoint       (0 0 0.025);
             normalVector    (0 0 1);
         }
         interpolate     true;
