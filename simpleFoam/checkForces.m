@@ -97,17 +97,18 @@ for i = 1:length(cases)
         %         close all
         cd(mainFolder)
 
-        forcesOF.xTotal(i) = forces(end,2);
-        forcesOF.yTotal(i) = forces(end,3);
-        forcesOF.zTotal(i) = forces(end,4);
+        intForMean = 500;
+        forcesOF.xTotal(i) = mean(forces(end-intForMean:end,2));
+        forcesOF.yTotal(i) = mean(forces(end-intForMean:end,3));
+        forcesOF.zTotal(i) = mean(forces(end-intForMean:end,4));
 
-        forcesOF.xPressure(i) = forces(end,5);
-        forcesOF.yPressure(i) = forces(end,6);
-        forcesOF.zPressure(i) = forces(end,7);
+        forcesOF.xPressure(i) = mean(forces(end-intForMean:end,5));
+        forcesOF.yPressure(i) = mean(forces(end-intForMean:end,6));
+        forcesOF.zPressure(i) = mean(forces(end-intForMean:end,7));
 
-        forcesOF.xViscous(i) = forces(end,8);
-        forcesOF.yViscous(i) = forces(end,9);
-        forcesOF.zViscous(i) = forces(end,10);
+        forcesOF.xViscous(i) = mean(forces(end-intForMean:end,8));
+        forcesOF.yViscous(i) = mean(forces(end-intForMean:end,9));
+        forcesOF.zViscous(i) = mean(forces(end-intForMean:end,10));
 
         
     end
