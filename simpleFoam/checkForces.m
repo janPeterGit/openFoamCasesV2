@@ -60,7 +60,7 @@ for i = 1:length(cases)
         f.InnerPosition = [5 5 30 30];
         f.WindowState = 'normal'; %fullscreen, minimize, normal, maximize
 
-        abweichungGanglinie = 1.005; % 0.5%
+        abweichungGanglinie = 1.01; % 1%
         timeStepWindow = 100;
         hold on
         %     plot(forces(end-timeStepWindow:end,1),forces(end-timeStepWindow:end,2))
@@ -113,7 +113,7 @@ for i = 1:length(cases)
     end
 end
 
-close all
+% close all
 
 %%
 
@@ -161,11 +161,15 @@ ylabel('Reibungskraftanteil in \%',Interpreter='latex');
 set(gca, 'YColor', color2); % Set the y-axis color to match the plot
 
 xlabel('$\gamma$ in $^\circ$',Interpreter='latex');
+xlim([0 90])
+xticks(0:10:90)
 grid on
 box off
 
 set(gca,'TickLabelInterpreter','latex')
 legend(Interpreter="latex",Location="east")
+figureName = ['D:\OneDrive - Universitaet Duisburg-Essen\03_Promotion\01_Dokument\00_Main\figures\07ergebnisse\forcesRotationFpressureVsFviscous.pdf'];
+    exportgraphics(f,figureName)
 
 %%
 font = 'Arial';
@@ -203,12 +207,16 @@ plotViscous.DisplayName = "Reibungskraft";
 % Customize the right y-axis
 ylabel('$C_{D,BR}$',Interpreter='latex');
 set(gca, 'YColor', color4); % Set the y-axis color to match the plot
+xlim([0 90])
+xticks(0:10:90)
 xlabel('$\gamma$ in $^\circ$',Interpreter='latex');
 grid on
 box off
 
 set(gca,'TickLabelInterpreter','latex')
 % legend(Interpreter="latex",Location="east")
+figureName = ['D:\OneDrive - Universitaet Duisburg-Essen\03_Promotion\01_Dokument\00_Main\figures\07ergebnisse\forcesRotationCDvsF.pdf'];
+    exportgraphics(f,figureName)
 
 %% functions
 
