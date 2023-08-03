@@ -1,9 +1,0 @@
-set logscale y
-set title 'Monitor'
-set ylabel 'value'
-set xlabel 'iteration'
-set grid
-# show grid
-plot "< cat log.mpirun | grep 'deltaT' | cut -d' ' -f3 | tr -d ','" title 'timestep size' lt 5 lc rgb "black"
-pause 10
-reread
