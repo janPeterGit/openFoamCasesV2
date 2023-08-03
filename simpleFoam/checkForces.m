@@ -10,7 +10,7 @@ matlabFolder = pwd;
 
 % read openfoam data
 % path = uigetdir('D:\GitHub\openFoamCasesV2\simpleFoam\');
-path = 'campagneUniformG0Rotation';
+path = 'campagneUniformG0Rotation\H045C';
 cd(path)
 mainFolder = pwd;
 
@@ -97,7 +97,7 @@ for i = 1:length(cases)
         %         close all
         cd(mainFolder)
 
-        intForMean = 500;
+        intForMean = 20; %%%% auf 500 %%%%
         forcesOF.xTotal(i) = mean(forces(end-intForMean:end,2));
         forcesOF.yTotal(i) = mean(forces(end-intForMean:end,3));
         forcesOF.zTotal(i) = mean(forces(end-intForMean:end,4));
@@ -169,7 +169,8 @@ box off
 
 set(gca,'TickLabelInterpreter','latex')
 legend(Interpreter="latex",Location="east")
-figureName = ['D:\OneDrive - Universitaet Duisburg-Essen\03_Promotion\01_Dokument\00_Main\figures\07ergebnisse\forcesRotationFpressureVsFviscous.pdf'];
+figureName = 'test.pdf';
+% figureName = ['D:\OneDrive - Universitaet Duisburg-Essen\03_Promotion\01_Dokument\00_Main\figures\07ergebnisse\forcesRotationFpressureVsFviscous.pdf'];
     exportgraphics(f,figureName)
 
 %%
@@ -216,7 +217,8 @@ box off
 
 set(gca,'TickLabelInterpreter','latex')
 % legend(Interpreter="latex",Location="east")
-figureName = ['D:\OneDrive - Universitaet Duisburg-Essen\03_Promotion\01_Dokument\00_Main\figures\07ergebnisse\forcesRotationCDvsF.pdf'];
+figureName = 'test2.pdf';
+% figureName = ['D:\OneDrive - Universitaet Duisburg-Essen\03_Promotion\01_Dokument\00_Main\figures\07ergebnisse\forcesRotationCDvsF.pdf'];
     exportgraphics(f,figureName)
 
 %% functions
