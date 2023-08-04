@@ -22,7 +22,9 @@ cases = cases(~ismember(cases, {'.', '..'}));
 
 forcesOF = table();
 
-for i = 1:length(cases)
+except15 = [1 2 3 5 6 7 8 9 10 11 12 13];
+
+for i = except15% 1:length(cases)
     dirInfo = dir(cases{i});
     if length(dirInfo) <= 2
     else
@@ -97,7 +99,7 @@ for i = 1:length(cases)
         %         close all
         cd(mainFolder)
 
-        intForMean = 20; %%%% auf 500 %%%%
+        intForMean = 500; %%%% auf 500 %%%%
         forcesOF.xTotal(i) = mean(forces(end-intForMean:end,2));
         forcesOF.yTotal(i) = mean(forces(end-intForMean:end,3));
         forcesOF.zTotal(i) = mean(forces(end-intForMean:end,4));
@@ -201,14 +203,18 @@ plotPressure.DisplayName = "Druckkraft";
 ylabel('$F_x$',Interpreter='latex');
 set(gca, 'YColor', color3); % Set the y-axis color to match the plot
 
-yyaxis right; % Use the right y-axis for the second set of data points
-plotViscous = plot(forcesOF.gamma,forcesOF.CDBR, 'r-v'); % Plot the second set of data points with red stars
-plotViscous.Color = color4;
-plotViscous.DisplayName = "Reibungskraft";
+if forcesOF.h(1) == 0.045
+else
+    yyaxis right; % Use the right y-axis for the second set of data points
+    plotViscous = plot(forcesOF.gamma,forcesOF.CDBR, 'r-v'); % Plot the second set of data points with red stars
+    plotViscous.Color = color4;
+    plotViscous.DisplayName = "Reibungskraft";
 
-% Customize the right y-axis
-ylabel('$C_{D,BR}$',Interpreter='latex');
-set(gca, 'YColor', color4); % Set the y-axis color to match the plot
+    % Customize the right y-axis
+    ylabel('$C_{D,BR}$',Interpreter='latex');
+    set(gca, 'YColor', color4); % Set the y-axis color to match the plot
+end
+
 xlim([0 90])
 xticks(0:10:90)
 xlabel('$\gamma$ in $^\circ$',Interpreter='latex');
