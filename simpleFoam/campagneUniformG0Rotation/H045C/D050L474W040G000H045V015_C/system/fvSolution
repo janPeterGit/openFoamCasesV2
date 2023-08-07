@@ -49,7 +49,7 @@ SIMPLE
 
 relaxationFactors
 {
-    /*
+    
     fields
     {
         p   0.3;
@@ -60,13 +60,13 @@ relaxationFactors
         "U|k|epsilon|omega"               0.7; // 0.9 is more stable but 0.95 more convergent
         "(U|k|epsilon|omega)Final"            1; // 0.9 is more stable but 0.95 more convergent
     }
-    */
+    /*
     equations
     {
         U               0.9; // 0.9 is more stable but 0.95 more convergent
         ".*"            0.9; // 0.9 is more stable but 0.95 more convergent
     }
-    
+    */
 }
 
 
