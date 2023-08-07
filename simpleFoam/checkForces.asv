@@ -25,19 +25,18 @@ forcesOF = table();
 except15 = [1 2 3 5 6 7 8 9 10 11 12 13];
 
 font = 'Arial';
-fontSize = 16;
-f = figure('DefaultTextFontName', font, ...
-    'DefaultAxesFontName', font,...
-    'DefaultAxesFontSize',fontSize, ...
-    'DefaultTextFontSize',fontSize);
-f.Name = 'Forces Specific Momentum';
-f.Color = [1 1 1];
-f.Units = 'centimeters';
-f.InnerPosition = [5 5 30 30];
-f.WindowState = 'maximized'; %fullscreen, minimize, normal, maximize
+        fontSize = 16;
+        f = figure('DefaultTextFontName', font, ...
+            'DefaultAxesFontName', font,...
+            'DefaultAxesFontSize',fontSize, ...
+            'DefaultTextFontSize',fontSize);
+        f.Name = 'Forces Specific Momentum';
+        f.Color = [1 1 1];
+        f.Units = 'centimeters';
+        f.InnerPosition = [5 5 30 30];
+        f.WindowState = 'maximized'; %fullscreen, minimize, normal, maximize
 
-tiledlayout(ceil(size(except15,2)/4),4)
-%         tiledlayout(ceil(size(cases,2)/4),4)
+        tiledlayout(size(cases,2)/4,3)
 
 for i = except15% 1:length(cases)
     dirInfo = dir(cases{i});
@@ -69,8 +68,6 @@ for i = except15% 1:length(cases)
 
         abweichungGanglinie = 1.01; % 1%
         timeStepWindow = 100;
-
-        nexttile
         hold on
         %     plot(forces(end-timeStepWindow:end,1),forces(end-timeStepWindow:end,2))
         %     plot([forces(end-timeStepWindow,1) forces(end,1)], ...
@@ -84,10 +81,10 @@ for i = except15% 1:length(cases)
         plot([forces(1,1) forces(end,1)], ...
             [forces(end,2)/abweichungGanglinie forces(end,2)/abweichungGanglinie],'r-')
 
-%         dim = [0.6 0.6 0.3 0.3];
-%         str = {['pressure=',num2str(forces(end,5)/forces(end,2)*100),...
-%             '%, friction=',num2str(forces(end,8)/forces(end,2)*100),'%']};
-%         annotation('textbox',dim,'String',str,'FitBoxToText','on');
+        dim = [0.6 0.6 0.3 0.3];
+        str = {['pressure=',num2str(forces(end,5)/forces(end,2)*100),...
+            '%, friction=',num2str(forces(end,8)/forces(end,2)*100),'%']};
+        annotation('textbox',dim,'String',str,'FitBoxToText','on');
 
         ylim([forces(end,2)/1.1 forces(end,2)*1.1])
 
@@ -98,10 +95,8 @@ for i = except15% 1:length(cases)
         xlabel('iteration')
         title(cases{i})
 
-        
-
-%         figureName = ['..\..\..\..\checkForces_',cases{i},'.png'];
-%         exportgraphics(f,figureName,'Resolution',200)
+        figureName = ['..\..\..\..\checkForces_',cases{i},'.png'];
+        exportgraphics(f,figureName,'Resolution',200)
 
 
 %         pause(1)
