@@ -64,6 +64,19 @@ for i = except15% 1:length(cases)
 
         forces = importForcesDat('force.dat');
 
+        intForMean = 499; %%%% auf 500 %%%%
+        forcesOF.xTotal(i) = mean(forces(end-intForMean:end,2));
+        forcesOF.yTotal(i) = mean(forces(end-intForMean:end,3));
+        forcesOF.zTotal(i) = mean(forces(end-intForMean:end,4));
+
+        forcesOF.xPressure(i) = mean(forces(end-intForMean:end,5));
+        forcesOF.yPressure(i) = mean(forces(end-intForMean:end,6));
+        forcesOF.zPressure(i) = mean(forces(end-intForMean:end,7));
+
+        forcesOF.xViscous(i) = mean(forces(end-intForMean:end,8));
+        forcesOF.yViscous(i) = mean(forces(end-intForMean:end,9));
+        forcesOF.zViscous(i) = mean(forces(end-intForMean:end,10));
+
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
 
@@ -80,9 +93,9 @@ for i = except15% 1:length(cases)
 
         plot(forces(1:end,1),forces(1:end,2))
         plot([forces(1,1) forces(end,1)], ...
-            [forces(end,2)*abweichungGanglinie forces(end,2)*abweichungGanglinie],'r-')
+            [forcesOF.xTotal(i)*abweichungGanglinie forcesOF.xTotal(i)*abweichungGanglinie],'r-')
         plot([forces(1,1) forces(end,1)], ...
-            [forces(end,2)/abweichungGanglinie forces(end,2)/abweichungGanglinie],'r-')
+            [forcesOF.xTotal(i)/abweichungGanglinie forcesOF.xTotal(i)/abweichungGanglinie],'r-')
 
 %         dim = [0.6 0.6 0.3 0.3];
 %         str = {['pressure=',num2str(forces(end,5)/forces(end,2)*100),...
@@ -108,18 +121,7 @@ for i = except15% 1:length(cases)
         %         close all
         cd(mainFolder)
 
-        intForMean = 500; %%%% auf 500 %%%%
-        forcesOF.xTotal(i) = mean(forces(end-intForMean:end,2));
-        forcesOF.yTotal(i) = mean(forces(end-intForMean:end,3));
-        forcesOF.zTotal(i) = mean(forces(end-intForMean:end,4));
-
-        forcesOF.xPressure(i) = mean(forces(end-intForMean:end,5));
-        forcesOF.yPressure(i) = mean(forces(end-intForMean:end,6));
-        forcesOF.zPressure(i) = mean(forces(end-intForMean:end,7));
-
-        forcesOF.xViscous(i) = mean(forces(end-intForMean:end,8));
-        forcesOF.yViscous(i) = mean(forces(end-intForMean:end,9));
-        forcesOF.zViscous(i) = mean(forces(end-intForMean:end,10));
+        
 
         
     end
