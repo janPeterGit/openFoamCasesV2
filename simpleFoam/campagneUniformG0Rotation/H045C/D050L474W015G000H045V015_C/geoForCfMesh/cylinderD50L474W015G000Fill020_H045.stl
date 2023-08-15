@@ -3471,4 +3471,4 @@ vertex 0.148766 -0.055264 0.045000
 vertex 0.227824 -0.065446 0.045000
 endloop
 endfacet
-solid cylinder
+endsolid cylinder
