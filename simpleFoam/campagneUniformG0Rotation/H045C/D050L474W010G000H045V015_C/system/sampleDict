@@ -66,8 +66,11 @@ interpolationScheme cellPoint;
 fields
 (
     	p
+	pMean
    	U
+	UMean
 	k
+	kMean
 	omega
 
 );
