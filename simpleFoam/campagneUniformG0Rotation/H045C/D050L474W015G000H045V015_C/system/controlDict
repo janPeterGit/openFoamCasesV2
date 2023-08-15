@@ -30,7 +30,7 @@ deltaT          1;
 
 writeControl    adjustable;
 
-writeInterval   100;
+writeInterval   500;
 
 purgeWrite      0;
 
@@ -124,6 +124,37 @@ functions
         libs            ("libfieldFunctionObjects.so");
         writeControl    writeTime;
         patches         (cylinder);
+    }
+
+    fieldAverage1
+    {
+        type            fieldAverage;
+        libs            ("libfieldFunctionObjects.so");
+
+        writeControl    timeStep;
+        writeInterval   500;
+    
+        fields
+        (
+            U
+            {
+                mean        yes;
+                prime2Mean  no;
+                base        iteration;
+            }
+            p
+            {
+                mean        yes;
+                prime2Mean  no;
+                base        iteration;
+            }
+            k
+            {
+                mean        yes;
+                prime2Mean  no;
+                base        iteration;
+            }
+        );
     }
 
 }
