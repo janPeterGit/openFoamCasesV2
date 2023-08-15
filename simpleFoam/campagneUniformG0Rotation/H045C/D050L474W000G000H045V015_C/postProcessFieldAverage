@@ -1,0 +1,12 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+
+rm -f log.postProcess
+rm -f log.simpleFoam
+
+cp system/fieldAverageTemplate/controlDict system/controlDict
+
+runApplication simpleFoam -postProcess
+
+cp system/simpleTemplate/controlDict system/controlDict

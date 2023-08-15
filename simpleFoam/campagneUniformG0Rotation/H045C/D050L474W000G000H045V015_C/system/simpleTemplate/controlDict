@@ -126,6 +126,26 @@ functions
         patches         (cylinder);
     }
 
+    fieldAverage1
+    {
+    type            fieldAverage;
+    libs            ("libfieldFunctionObjects.so");
+
+    fields
+    (
+        "(U|p|k)"
+        {
+            mean        yes;
+            prime2Mean  no;
+            base        iteration;
+        }
+        
+    );
+
+    writeControl    timeStep;
+    writeInterval   500;
+    }
+
 }
 
 // ************************************************************************* //

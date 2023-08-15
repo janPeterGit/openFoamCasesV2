@@ -17,14 +17,14 @@ FoamFile
 
 application     simpleFoam;
 
-//startFrom       startTime;
-startFrom       latestTime;
+startFrom       startTime;
+//startFrom       latestTime;
 
-startTime       0;
+startTime       5000;
 
 stopAt          endTime;
 
-endTime         4000;
+endTime         5500;
 
 deltaT          1;
 
@@ -56,6 +56,7 @@ maxDeltaT       0.5;
 
 functions
 {
+    /*
     forcesCylinder
     {
         // Mandatory entries
@@ -125,36 +126,25 @@ functions
         writeControl    writeTime;
         patches         (cylinder);
     }
-
+    */
     fieldAverage1
     {
-        type            fieldAverage;
-        libs            ("libfieldFunctionObjects.so");
+    type            fieldAverage;
+    libs            ("libfieldFunctionObjects.so");
 
-        writeControl    timeStep;
-        writeInterval   500;
-    
-        fields
-        (
-            U
-            {
-                mean        yes;
-                prime2Mean  no;
-                base        iteration;
-            }
-            p
-            {
-                mean        yes;
-                prime2Mean  no;
-                base        iteration;
-            }
-            k
-            {
-                mean        yes;
-                prime2Mean  no;
-                base        iteration;
-            }
-        );
+    fields
+    (
+        "(U|p|k)"
+        {
+            mean        yes;
+            prime2Mean  no;
+            base        iteration;
+        }
+        
+    );
+
+    writeControl    timeStep;
+    writeInterval   500;
     }
 
 }
