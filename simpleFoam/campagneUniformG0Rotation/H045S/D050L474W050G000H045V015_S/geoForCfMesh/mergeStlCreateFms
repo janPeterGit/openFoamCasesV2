@@ -1,0 +1,20 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+
+rm -f log*
+
+rm -f merged*
+rm -f *.fms
+
+cat flume* cylinder* >> merged.stl
+echo "STL merged"
+ls
+
+#runApplication surfaceGenerateBoundingBox cylinder* merged.stl 0 4.5 0 0.79 0 0.045
+
+runApplication surfaceFeatureEdges merged.stl merged.fms -angle 15
+echo "FMS created"
+ls
+
+#------------------------------------------------------------------------------

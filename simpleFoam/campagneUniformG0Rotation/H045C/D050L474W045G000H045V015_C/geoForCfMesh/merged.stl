@@ -3471,7 +3471,7 @@ vertex -0.170590 0.164578 0.045000
 vertex 0.022974 -0.044015 0.045000
 endloop
 endfacet
-solid cylinder
+endsolid cylinder
 solid bottom
 facet normal 0.000000 0.000000 -1.000000
 outer loop

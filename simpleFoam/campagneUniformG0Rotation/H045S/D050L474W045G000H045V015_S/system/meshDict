@@ -25,15 +25,16 @@ maxCellSize 0.01;
 //boundaryCellSize 0.01;
 
 
-//localRefinement
-//{
-//	
-//	"cylinder.*"
-//	{
-//       //additionalRefinementLevels 5;
-//	   //refinementThickness  0.01; 
-//	   cellSize 1.251E-3;//6.251E-4;
-//	}
+
+localRefinement
+{
+	
+	"cylinder.*"
+	{
+       additionalRefinementLevels 4;
+	   refinementThickness  0.01; 
+	   //cellSize 6.251E-4;
+	}
 //	/*
 //	"frontAndBack.*"
 //	{
@@ -48,7 +49,7 @@ maxCellSize 0.01;
 //	   cellSize 5.1E-3;
 //	}
 //	*/
-//}
+}
 
 
 /*
@@ -110,20 +111,20 @@ objectRefinements
 	{
 		type			box;
 		cellSize		0.0051;
-		centre			(0.25 0	0.1);
+		centre			(0.25 0	0.0225);
 		lengthX			1.5;
 		lengthY			0.79;
-		lengthZ			0.2;
+		lengthZ			0.045;
 	}
 
 	box02
 	{
 		type			box;
 		cellSize		0.00251;
-		centre			(0.05	0	0.1);
+		centre			(0.05	0.07	0.0225);
 		lengthX			0.9;
 		lengthY			0.65;
-		lengthZ			0.2;
+		lengthZ			0.045;
 	}
 	/*
 	cone01 // around fixation
@@ -156,7 +157,7 @@ objectRefinements
 		lengthY			0.336;
 		lengthZ			0.002;
 	}
-	*/
+	
 	
 	cone03 // around cylinder
 	{
@@ -177,7 +178,7 @@ objectRefinements
 		radius0	0.0275;
 		radius1 0.0275;
 	}
-	
+	*/
 	
 }
 
@@ -191,7 +192,7 @@ boundaryLayers
 		{
 			nLayers					10;
 			thicknessRatio 			1.5;
-			maxFirstLayerThickness	1.251E-3;;
+			maxFirstLayerThickness	1.251E-3;
 			allowDiscontinuity 1;
         }
 		
@@ -220,6 +221,9 @@ boundaryLayers
 	
 }
 */
+
+
+
 
 
 renameBoundary
@@ -254,7 +258,7 @@ renameBoundary
 		}
 		top
 		{
-			type	symmetryPlane;
+			type	symmetry;
 			newName	top;
 		}
 		/*
