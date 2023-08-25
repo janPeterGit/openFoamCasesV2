@@ -24,7 +24,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         5000;
+endTime         1717;
 
 deltaT          1;
 
@@ -132,7 +132,7 @@ functions
         libs            ("libfieldFunctionObjects.so");
 
         writeControl    timeStep;
-        writeInterval   500;
+        writeInterval   10;
     
         fields
         (
