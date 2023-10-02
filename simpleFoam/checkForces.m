@@ -10,7 +10,7 @@ matlabFolder = pwd;
 
 % read openfoam data
 % path = uigetdir('D:\GitHub\openFoamCasesV2\simpleFoam\');
-path = 'campagneUniformG0Rotation\H045C';
+path = 'campagneUniformG0Rotation\H100S';
 cd(path)
 mainFolder = pwd;
 
@@ -39,7 +39,8 @@ f.WindowState = 'maximized'; %fullscreen, minimize, normal, maximize
 tiledlayout(ceil(size(except15,2)/4),4)
 %         tiledlayout(ceil(size(cases,2)/4),4)
 
-for i = except15% 1:length(cases)
+% for i = except15% 1:length(cases)
+for i = 1:length(cases)
     dirInfo = dir(cases{i});
     if length(dirInfo) <= 2
     else
@@ -60,11 +61,11 @@ for i = except15% 1:length(cases)
         % Exclude '.' and '..' folders
         timeStepsNames = timeStepsNames(~ismember(timeStepsNames, {'.', '..'}));
 
-        cd(timeStepsNames{end})
+        cd(timeStepsNames{1})
 
         forces = importForcesDat('force.dat');
 
-        intForMean = 499; %%%% auf 500 %%%%
+        intForMean = 100; %%%% auf 500 %%%%
         forcesOF.xTotal(i) = mean(forces(end-intForMean:end,2));
         forcesOF.yTotal(i) = mean(forces(end-intForMean:end,3));
         forcesOF.zTotal(i) = mean(forces(end-intForMean:end,4));
@@ -80,7 +81,7 @@ for i = except15% 1:length(cases)
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
 
-        abweichungGanglinie = 1.01; % 1%
+        abweichungGanglinie = 1.005; % 0,5%
         timeStepWindow = 100;
 
         nexttile
@@ -102,15 +103,23 @@ for i = except15% 1:length(cases)
 %             '%, friction=',num2str(forces(end,8)/forces(end,2)*100),'%']};
 %         annotation('textbox',dim,'String',str,'FitBoxToText','on');
 
-        ylim([forces(end,2)/1.1 forces(end,2)*1.1])
+        ylim([forces(end,2)/1.05 forces(end,2)*1.05])
 
         grid on
         box off
 
-        ylabel('F_{x,total}')
-        xlabel('iteration')
-        title(cases{i})
+        ylabel('$F_{x}$',Interpreter="latex")
+        xlabel('iteration $i$',Interpreter="latex")
+        title(['$L=',num2str(forcesOF.L(i)),'\textrm{ m}, ', ...
+            '\gamma=',num2str(forcesOF.gamma(i)),'^\circ, ', ...
+            'h=',num2str(forcesOF.h(i)),'\textrm{ m}, ', ...
+            'u=',num2str(forcesOF.v(i)),'\textrm{ m/s}$'],Interpreter="latex")
+        
+        set(gca,'TickLabelInterpreter','latex')
 
+        if i == 1
+            legend(Interpreter="latex")
+        end
         
 
 %         figureName = ['..\..\..\..\checkForces_',cases{i},'.png'];
