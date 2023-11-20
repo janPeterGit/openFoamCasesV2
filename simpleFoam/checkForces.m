@@ -10,7 +10,7 @@ matlabFolder = pwd;
 
 % read openfoam data
 % path = uigetdir('D:\GitHub\openFoamCasesV2\simpleFoam\');
-path = 'campagneUniformG0Rotation\H100S';
+path = 'campagneUniformG0Rotation\H100C';
 cd(path)
 mainFolder = pwd;
 
@@ -36,7 +36,7 @@ f.Units = 'centimeters';
 f.InnerPosition = [5 5 30 30];
 f.WindowState = 'maximized'; %fullscreen, minimize, normal, maximize
 
-tiledlayout(ceil(size(except15,2)/4),4)
+tiledlayout(ceil(size(except15,2)/4),5)
 %         tiledlayout(ceil(size(cases,2)/4),4)
 
 % for i = except15% 1:length(cases)
@@ -194,6 +194,79 @@ legend(Interpreter="latex",Location="east")
 figureName = 'test.pdf';
 % figureName = ['D:\OneDrive - Universitaet Duisburg-Essen\03_Promotion\01_Dokument\00_Main\figures\07ergebnisse\forcesRotationFpressureVsFviscous.pdf'];
     exportgraphics(f,figureName)
+
+%%
+% Berechnung des Betrags der resultierenden Kraft
+forcesOF.Fres = sqrt(forcesOF.xTotal.^2 + forcesOF.yTotal.^2);
+
+% Berechnung des Winkels der Kraft in Grad
+forcesOF.theta = atan2(forcesOF.yTotal, forcesOF.xTotal) * (180 / pi);
+
+% Ausgabe der Ergebnisse
+fprintf('Betrag der resultierenden Kraft: %f\n', forcesOF.Fres);
+fprintf('Winkel der Kraft (in Grad): %f\n', forcesOF.theta);
+
+font = 'Arial';
+        fontSize = 8;
+        f = figure('DefaultTextFontName', font, ...
+            'DefaultAxesFontName', font,...
+            'DefaultAxesFontSize',fontSize, ...
+            'DefaultTextFontSize',fontSize);
+        f.Name = 'Fx and Fy';
+        f.Color = [1 1 1];
+        f.Units = 'centimeters';
+        f.InnerPosition = [5 5 7.2 7];
+        f.WindowState = 'normal'; %fullscreen, minimize, normal, maximize
+
+color1 = [0 0.4470 0.7410];
+color2 = [0.8500 0.3250 0.0980];
+
+hold on
+% yyaxis left; % Use the left y-axis for the first set of data points
+plotPressure = plot(forcesOF.gamma,forcesOF.xTotal, 'b-o'); % Plot the first set of data points with blue circles
+plotPressure.Color = color1;
+plotPressure.DisplayName = "$F_x$";
+
+% Customize the left y-axis
+ylabel('$F$ in N',Interpreter='latex');
+% set(gca, 'YColor', color1); % Set the y-axis color to match the plot
+
+% yyaxis right; % Use the right y-axis for the second set of data points
+plotViscous = plot(forcesOF.gamma,forcesOF.yTotal, 'r-^'); % Plot the second set of data points with red stars
+plotViscous.Color = color2;
+plotViscous.DisplayName = "$F_y$";
+
+% Customize the right y-axis
+% ylabel('Reibungskraftanteil in \%',Interpreter='latex');
+% set(gca, 'YColor', color2); % Set the y-axis color to match the plot
+
+plotViscous = plot(forcesOF.gamma,forcesOF.Fres, 'r-^'); % Plot the second set of data points with red stars
+plotViscous.Color = color3;
+plotViscous.DisplayName = "$F_{res}$";
+
+xlabel('$\gamma$ in $^\circ$',Interpreter='latex');
+xlim([0 90])
+xticks(0:10:90)
+
+% ylim([min(forcesOF.xTotal) max(forcesOF.xTotal)])
+grid on
+box off
+
+set(gca,'TickLabelInterpreter','latex')
+legend(Interpreter="latex",Location="northwest")
+figureName = 'test.pdf';
+% figureName = ['D:\OneDrive - Universitaet Duisburg-Essen\03_Promotion\01_Dokument\00_Main\figures\07ergebnisse\forcesRotationFpressureVsFviscous.pdf'];
+    exportgraphics(f,figureName)
+
+    %%
+    figure()
+
+forcesOF.gammaRadiant = deg2rad(forcesOF.gamma); % Umwandlung in Radiant
+
+% Erstellen eines Polardiagramms
+polarplot(forcesOF.gammaRadiant, forcesOF.Fres, 'o-');
+title('Winkel im Polardiagramm');
+
 
 %%
 font = 'Arial';
