@@ -11,6 +11,9 @@ matlabFolder = pwd;
 % read openfoam data
 % path = uigetdir('D:\GitHub\openFoamCasesV2\simpleFoam\');
 path = 'campagneUniformG0Rotation\H100C';
+% path = 'campagneUniformG0Rotation\H045C';
+% path = 'campagneUniformG0Rotation\H100S';
+% path = 'campagneUniformG0Rotation\H05S';
 cd(path)
 mainFolder = pwd;
 
@@ -163,6 +166,7 @@ font = 'Arial';
 
 color1 = [0 0.4470 0.7410];
 color2 = [0.8500 0.3250 0.0980];
+color3 = [0.9290 0.6940 0.1250];
 
 hold on
 yyaxis left; % Use the left y-axis for the first set of data points
@@ -202,12 +206,14 @@ forcesOF.Fres = sqrt(forcesOF.xTotal.^2 + forcesOF.yTotal.^2);
 % Berechnung des Winkels der Kraft in Grad
 forcesOF.theta = atan2(forcesOF.yTotal, forcesOF.xTotal) * (180 / pi);
 
+forcesOF.Fgamma = forcesOF.xTotal.*cos(deg2rad(90-forcesOF.gamma)) + forcesOF.yTotal.*sin(deg2rad(90-forcesOF.gamma));
+
 % Ausgabe der Ergebnisse
 fprintf('Betrag der resultierenden Kraft: %f\n', forcesOF.Fres);
 fprintf('Winkel der Kraft (in Grad): %f\n', forcesOF.theta);
 
 font = 'Arial';
-        fontSize = 8;
+        fontSize = 18;
         f = figure('DefaultTextFontName', font, ...
             'DefaultAxesFontName', font,...
             'DefaultAxesFontSize',fontSize, ...
@@ -215,8 +221,8 @@ font = 'Arial';
         f.Name = 'Fx and Fy';
         f.Color = [1 1 1];
         f.Units = 'centimeters';
-        f.InnerPosition = [5 5 7.2 7];
-        f.WindowState = 'normal'; %fullscreen, minimize, normal, maximize
+        f.InnerPosition = [5 5 25 20];
+%         f.WindowState = 'normal'; %fullscreen, minimize, normal, maximize
 
 color1 = [0 0.4470 0.7410];
 color2 = [0.8500 0.3250 0.0980];
@@ -240,9 +246,13 @@ plotViscous.DisplayName = "$F_y$";
 % ylabel('Reibungskraftanteil in \%',Interpreter='latex');
 % set(gca, 'YColor', color2); % Set the y-axis color to match the plot
 
-plotViscous = plot(forcesOF.gamma,forcesOF.Fres, 'r-^'); % Plot the second set of data points with red stars
+plotViscous = plot(forcesOF.gamma,forcesOF.Fres, 'r-s'); % Plot the second set of data points with red stars
 plotViscous.Color = color3;
 plotViscous.DisplayName = "$F_{res}$";
+
+plotViscous = plot(forcesOF.gamma,forcesOF.Fgamma, 'r-*'); % Plot the second set of data points with red stars
+plotViscous.Color = color4;
+plotViscous.DisplayName = "$F_{drag}$";
 
 xlabel('$\gamma$ in $^\circ$',Interpreter='latex');
 xlim([0 90])
@@ -259,14 +269,16 @@ figureName = 'test.pdf';
     exportgraphics(f,figureName)
 
     %%
-    figure()
-
-forcesOF.gammaRadiant = deg2rad(forcesOF.gamma); % Umwandlung in Radiant
-
-% Erstellen eines Polardiagramms
-polarplot(forcesOF.gammaRadiant, forcesOF.Fres, 'o-');
-title('Winkel im Polardiagramm');
-
+%     figure()
+% 
+% forcesOF.gammaRadiant = deg2rad(forcesOF.gamma); % Umwandlung in Radiant
+% 
+% % Erstellen eines Polardiagramms
+% polarplot(forcesOF.gammaRadiant, forcesOF.Fres, 'o-'); hold on
+% polarplot(forcesOF.gammaRadiant, forcesOF.xTotal, 'o-');
+% polarplot(forcesOF.gammaRadiant, forcesOF.yTotal, 'o-');
+% title('Winkel im Polardiagramm');
+% thetalim([0 90])
 
 %%
 font = 'Arial';
