@@ -16,6 +16,7 @@ color4 = [0.4940 0.1840 0.5560];
 % read openfoam data
 paths = ['campagneUniformG0Rotation\H100C'
         'campagneUniformG0Rotation\H045C'];
+% paths = ['campagneUniformG0Rotation\H100C'];
 % path = 'campagneUniformG0Rotation\H045C';
 % path = 'campagneUniformG0Rotation\H100S';
 % path = 'campagneUniformG0Rotation\H045S';
@@ -149,8 +150,7 @@ for pathSelect = 1:size(paths,1)
         end
     end
 
-    % close all
-
+    close(gcf)
     %%
 
     forcesOF.xPressurePortion = round(forcesOF.xPressure ./ forcesOF.xTotal .*100,1);
@@ -163,44 +163,68 @@ for pathSelect = 1:size(paths,1)
 
     forcesOF.CDBR = 2 * forcesOF.xTotal ./(density * forcesOF.v.^2 .* forcesOF.Aref .* (1-forcesOF.BR).^-2);
 
-    %%
+      %%
     font = 'Arial';
     fontSize = 8;
     f = figure('DefaultTextFontName', font, ...
         'DefaultAxesFontName', font,...
         'DefaultAxesFontSize',fontSize, ...
         'DefaultTextFontSize',fontSize);
-    f.Name = 'Forces Specific Momentum';
+    f.Name = 'anteilDruckReibung';
     f.Color = [1 1 1];
     f.Units = 'centimeters';
-    f.InnerPosition = [5 5 7.2 7];
+    f.InnerPosition = [5+pathSelect*2 5 7.2 7];
     f.WindowState = 'normal'; %fullscreen, minimize, normal, maximize
 
-
+%     figure()
     hold on
-    yyaxis left; % Use the left y-axis for the first set of data points
+%     barPlot = bar(forcesOF.gamma,[forcesOF.xPressurePortion forcesOF.xViscousPortion],'stacked');
+% 
+%     barPlot(1).EdgeColor = color1;
+%     barPlot(1).FaceColor = color1;
+%     barPlot(1).FaceAlpha = .2;
+% 
+%     barPlot(2).EdgeColor = color2;
+%     barPlot(2).FaceColor = color2;
+%     barPlot(2).FaceAlpha = .2;
+% 
+%     
+%     ylabel('Widerstandsanteil in \%',Interpreter='latex');
+%     xlabel('$\gamma$ in $^\circ$',Interpreter='latex');
+%     grid on
+%     box off
+% 
+%     set(gca,'TickLabelInterpreter','latex')
+%     legend('Druckkraft $F_{D,x}$','Reibungskraft $F_{f,x}$',...
+%         Interpreter="latex",Location="northoutside",orientation='horizontal')
+% 
+%     figure()
+
+%     yyaxis left; % Use the left y-axis for the first set of data points
     plotPressure = plot(forcesOF.gamma,forcesOF.xPressurePortion, 'b-o'); % Plot the first set of data points with blue circles
     plotPressure.Color = color1;
-    plotPressure.DisplayName = "$F_{D,x}$";
+    plotPressure.DisplayName = "Druckkraft $F_{D,x}$";
+    ylim([0 100])
     % plotPressure = plot(forcesOF.gamma,forcesOF.yPressurePortion, 'b-v'); % Plot the first set of data points with blue circles
     % plotPressure.Color = color1;
     % plotPressure.DisplayName = "F_{D,y}";
 
     % Customize the left y-axis
-    ylabel('Druckkraftanteil in \%',Interpreter='latex');
-    set(gca, 'YColor', color1); % Set the y-axis color to match the plot
+    ylabel('Widerstsandsanteil in \%',Interpreter='latex');
+%     set(gca, 'YColor', color1); % Set the y-axis color to match the plot
 
-    yyaxis right; % Use the right y-axis for the second set of data points
+%     yyaxis right; % Use the right y-axis for the second set of data points
     plotViscous = plot(forcesOF.gamma,forcesOF.xViscousPortion, 'r-s'); % Plot the second set of data points with red stars
     plotViscous.Color = color2;
-    plotViscous.DisplayName = "$F_{f,x}$";
+    plotViscous.DisplayName = "Reibungskraft $F_{f,x}$";
+    ylim([0 100])
     % plotViscous = plot(forcesOF.gamma,forcesOF.yViscousPortion, 'r-^'); % Plot the second set of data points with red stars
     % plotViscous.Color = color2;
     % plotViscous.DisplayName = "F_{Viscous,y}";
 
     % Customize the right y-axis
-    ylabel('Reibungskraftanteil in \%',Interpreter='latex');
-    set(gca, 'YColor', color2); % Set the y-axis color to match the plot
+%     ylabel('Reibungskraftanteil in \%',Interpreter='latex');
+%     set(gca, 'YColor', color2); % Set the y-axis color to match the plot
 
     xlabel('$\gamma$ in $^\circ$',Interpreter='latex');
     xlim([0 90])
@@ -208,11 +232,66 @@ for pathSelect = 1:size(paths,1)
     grid on
     box off
 
+%     xticks([])
+    
+%     currentFolder = pwd; cd(matlabFolder)
+%     breakyaxis([max(forcesOF.xViscousPortion)+7.5 min(forcesOF.xPressurePortion)-7.5]); cd(currentFolder)
+
     set(gca,'TickLabelInterpreter','latex')
     legend(Interpreter="latex",Location="east")
-    figureName = 'test.pdf';
+    figureName = ['anteilDruckReibung_',path(end-4:end),'.pdf'];
     % figureName = ['D:\OneDrive - Universitaet Duisburg-Essen\03_Promotion\01_Dokument\00_Main\figures\07ergebnisse\forcesRotationFpressureVsFviscous.pdf'];
     exportgraphics(f,figureName)
+    %%
+%     font = 'Arial';
+%     fontSize = 8;
+%     f = figure('DefaultTextFontName', font, ...
+%         'DefaultAxesFontName', font,...
+%         'DefaultAxesFontSize',fontSize, ...
+%         'DefaultTextFontSize',fontSize);
+%     f.Name = 'Forces Specific Momentum';
+%     f.Color = [1 1 1];
+%     f.Units = 'centimeters';
+%     f.InnerPosition = [5 5 7.2 7];
+%     f.WindowState = 'normal'; %fullscreen, minimize, normal, maximize
+% 
+% 
+%     hold on
+%     yyaxis left; % Use the left y-axis for the first set of data points
+%     plotPressure = plot(forcesOF.gamma,forcesOF.xPressurePortion, 'b-o'); % Plot the first set of data points with blue circles
+%     plotPressure.Color = color1;
+%     plotPressure.DisplayName = "$F_{D,x}$";
+%     % plotPressure = plot(forcesOF.gamma,forcesOF.yPressurePortion, 'b-v'); % Plot the first set of data points with blue circles
+%     % plotPressure.Color = color1;
+%     % plotPressure.DisplayName = "F_{D,y}";
+% 
+%     % Customize the left y-axis
+%     ylabel('Druckkraftanteil in \%',Interpreter='latex');
+%     set(gca, 'YColor', color1); % Set the y-axis color to match the plot
+% 
+%     yyaxis right; % Use the right y-axis for the second set of data points
+%     plotViscous = plot(forcesOF.gamma,forcesOF.xViscousPortion, 'r-s'); % Plot the second set of data points with red stars
+%     plotViscous.Color = color2;
+%     plotViscous.DisplayName = "$F_{f,x}$";
+%     % plotViscous = plot(forcesOF.gamma,forcesOF.yViscousPortion, 'r-^'); % Plot the second set of data points with red stars
+%     % plotViscous.Color = color2;
+%     % plotViscous.DisplayName = "F_{Viscous,y}";
+% 
+%     % Customize the right y-axis
+%     ylabel('Reibungskraftanteil in \%',Interpreter='latex');
+%     set(gca, 'YColor', color2); % Set the y-axis color to match the plot
+% 
+%     xlabel('$\gamma$ in $^\circ$',Interpreter='latex');
+%     xlim([0 90])
+%     xticks(0:10:90)
+%     grid on
+%     box off
+% 
+%     set(gca,'TickLabelInterpreter','latex')
+%     legend(Interpreter="latex",Location="east")
+%     figureName = 'test.pdf';
+%     % figureName = ['D:\OneDrive - Universitaet Duisburg-Essen\03_Promotion\01_Dokument\00_Main\figures\07ergebnisse\forcesRotationFpressureVsFviscous.pdf'];
+%     exportgraphics(f,figureName)
 
     %%
     % Berechnung des Betrags der resultierenden Kraft
@@ -234,10 +313,10 @@ for pathSelect = 1:size(paths,1)
         'DefaultAxesFontName', font,...
         'DefaultAxesFontSize',fontSize, ...
         'DefaultTextFontSize',fontSize);
-    f.Name = 'Forces Specific Momentum';
+    f.Name = 'anteilQuerTangentialResultierende';
     f.Color = [1 1 1];
     f.Units = 'centimeters';
-    f.InnerPosition = [5 5 7.2 7];
+    f.InnerPosition = [5 5+pathSelect*2 7.2 7];
     f.WindowState = 'normal'; %fullscreen, minimize, normal, maximize
 
     color1 = [0 0.4470 0.7410];
@@ -287,7 +366,7 @@ for pathSelect = 1:size(paths,1)
 
     set(gca,'TickLabelInterpreter','latex')
     legend(Interpreter="latex",Location="northoutside",Orientation="vertical",NumColumns=2)
-    figureName = 'test.pdf';
+    figureName = ['anteilQuerTangentialResultierende_',path(end-4:end),'.pdf'];
     % figureName = ['D:\OneDrive - Universitaet Duisburg-Essen\03_Promotion\01_Dokument\00_Main\figures\07ergebnisse\forcesRotationFpressureVsFviscous.pdf'];
     exportgraphics(f,figureName)
 
