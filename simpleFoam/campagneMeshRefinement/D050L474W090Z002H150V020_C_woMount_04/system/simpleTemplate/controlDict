@@ -112,7 +112,7 @@ functions
     {
         type            solverInfo;
         libs            ("libutilityFunctionObjects.so");
-        fields          (p); //(".*"); 
+        fields          (".*"); 
         writeControl    writeTime;
         //writeResidualFields yes;
     }
