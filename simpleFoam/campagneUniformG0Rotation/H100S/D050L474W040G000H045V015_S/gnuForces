@@ -1,9 +1,21 @@
-#set logscale y
-set title 'Monitor'
-set ylabel 'value'
-set xlabel 'iteration'
+# Gnuplot-Skript, um 'total_x' über 'Time' zu plotten
+
+# Setzen Sie den Titel und die Achsenbeschriftungen
+set title "Total Force in X Direction Over Time"
+set xlabel "Time"
+set ylabel "Total Force X (total_x)"
 set grid
-# show grid
-plot "< cat log.mpirun | grep 'Total' | awk -F'[()]' '{print $2}' | cut -d ' ' -f1 " title 'force' lt 5 lc rgb "black"
+
+# Definieren Sie den Pfad zur Datenquelle
+datafile = 'postProcessing/forcesCylinder/5000/force.dat'
+
+# Plot-Befehl
+plot "< awk 'NR>2 {print $1, substr($2, 2, length($2)-2)}' ".datafile using 1:2 with lines title 'Total X'
+
+# Anzahl der zu plottenden Zeitschritte
+#last_steps = 1000
+# Plot-Befehl unter Verwendung von 'tail' um nur die letzten 1000 Zeitschritte zu erhalten
+#plot "< tail -n ".(last_steps + 2)." ".datafile." | awk 'NR>2 {print $1, substr($2, 2, length($2)-2)}'" using 1:2 with lines title 'Total X'
+
 pause 10
 reread
