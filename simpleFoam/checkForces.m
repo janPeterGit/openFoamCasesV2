@@ -15,7 +15,9 @@ color4 = [0.4940 0.1840 0.5560];
 
 % read openfoam data
 paths = ['campagneUniformG0Rotation\H100C'
-        'campagneUniformG0Rotation\H045C'];
+    'campagneUniformG0Rotation\H100S'
+        'campagneUniformG0Rotation\H045C'
+        'campagneUniformG0Rotation\H045S'];
 % paths = ['campagneUniformG0Rotation\H100C'];
 % path = 'campagneUniformG0Rotation\H045C';
 % path = 'campagneUniformG0Rotation\H100S';
@@ -150,7 +152,7 @@ for pathSelect = 1:size(paths,1)
         end
     end
 
-    close(gcf)
+%     close(gcf)
     %%
 
     forcesOF.xPressurePortion = round(forcesOF.xPressure ./ forcesOF.xTotal .*100,1);
