@@ -125,7 +125,45 @@ functions
         writeControl    writeTime;
         patches         (cylinder);
     }
+    
+    writeUComponents
+    {
+        type            codedFunctionObject;
+        name            writeUComponents;
 
+        // Code to be executed on library load (not used here)
+        codeSetup       #{};
+
+        // Code to be executed at every time step
+        codeExecute
+        #{
+            const volVectorField& U = mesh().lookupObject<volVectorField>("U");
+            volScalarField Ux
+            (
+                IOobject
+                (
+                    "Ux", // Name of the new field
+                    U.time().timeName(),
+                    mesh(),
+                    IOobject::NO_READ,
+                    IOobject::AUTO_WRITE
+                ),
+                mesh(),
+                dimensionedScalar("zero", U.dimensions(), 0.0)
+            );
+
+            volScalarField Uy(Ux); Uy.rename("Uy");
+            volScalarField Uz(Ux); Uz.rename("Uz");
+
+            Ux == U.component(0); // Extract X component
+            Uy == U.component(1); // Extract Y component
+            Uz == U.component(2); // Extract Z component
+
+            Ux.write();
+            Uy.write();
+            Uz.write();
+        #};
+    }
 }
 
 // ************************************************************************* //

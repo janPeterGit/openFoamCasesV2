@@ -1,0 +1,19 @@
+from PyFoam.RunDictionary.ParsedParameterFile import ParsedParameterFile
+from PyFoam.RunDictionary.TimeDirectory import TimeDirectory
+import os
+
+case_dir = "D050L474W090Z002H150V020_C_woMount_01"
+time_dirs = [d for d in os.listdir(case_dir) if d.isnumeric()]
+
+for time in time_dirs:
+    # Adjusted to pass `case_dir` and `time` separately
+    time_dir = TimeDirectory(case_dir, time)  # Now correctly passing two arguments
+    U = time_dir.field("U")
+
+    Ux = U.component(0)
+    Uy = U.component(1)
+    Uz = U.component(2)
+
+    Ux.writeToFile()
+    Uy.writeToFile()
+    Uz.writeToFile()
