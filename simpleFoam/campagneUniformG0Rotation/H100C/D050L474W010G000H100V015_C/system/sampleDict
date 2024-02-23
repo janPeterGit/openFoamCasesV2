@@ -66,8 +66,11 @@ interpolationScheme cellPoint;
 fields
 (
     	p
+	pMean
    	U
+	UMean
 	k
+	kMean
 	omega
 
 );
@@ -121,8 +124,8 @@ surfaces
         planeType       pointAndNormal;
         pointAndNormalDict
         {
-            basePoint       (0 0 0.025);
-            normalVector    (0 0 1);
+            point       (0 0 0.025);
+            normal    (0 0 1);
         }
         interpolate     true;
 
@@ -141,8 +144,8 @@ surfaces
         planeType       pointAndNormal;
         pointAndNormalDict
         {
-            basePoint       (0 0 0);
-            normalVector    (0 1 0);
+            point       (0 0 0);
+            normal    (0 1 0);
         }
         interpolate     true;
 
@@ -161,8 +164,8 @@ surfaces
         planeType       pointAndNormal;
         pointAndNormalDict
         {
-            basePoint       (0 0 0);
-            normalVector    (1 0 0);
+            point       (0 0 0);
+            normal    (1 0 0);
         }
         interpolate     true;
 
