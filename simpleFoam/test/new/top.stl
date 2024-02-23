@@ -1,0 +1,16 @@
+solid top
+facet normal 0.000000 0.000000 -1.000000
+outer loop
+vertex 7.080266 7.112746 2.221945
+vertex 7.080266 -7.070074 2.221945
+vertex -7.110720 -7.070074 2.221945
+endloop
+endfacet
+facet normal 0.000000 0.000000 -1.000000
+outer loop
+vertex 7.080266 7.112746 2.221945
+vertex -7.110720 -7.070074 2.221945
+vertex -7.110720 7.112746 2.221945
+endloop
+endfacet
+endsolid top
