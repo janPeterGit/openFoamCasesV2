@@ -96,7 +96,7 @@ objectRefinements
 	{
 		type			box;
 		cellSize		0.00251;
-		centre			(0.05	0.07	0.1);
+		centre			(0.05	0	0.1);
 		lengthX			0.9;
 		lengthY			0.65;
 		lengthZ			0.2;
@@ -138,8 +138,8 @@ objectRefinements
 	{
 		type				cone;
 		cellSize			1.251E-3;// 0.00251;
-		p0				(0 0.24 0.035); //0.2445
-		p1				(0 -0.24 0.035); //0.2445
+		p0				(0 0.246 0.035); //0.2445
+		p1				(0 -0.246 0.035); //0.2445
 		radius0	0.0325;
 		radius1 0.0325;
 	}
@@ -148,8 +148,8 @@ objectRefinements
 	{
 		type				cone;
 		cellSize			6.251E-4;// 0.00251;
-		p0				(0 0.239 0.035); //0.2395
-		p1				(0 -0.239 0.035); //0.2395
+		p0				(0 0.242 0.035); //0.2395
+		p1				(0 -0.242 0.035); //0.2395
 		radius0	0.0275;
 		radius1 0.0275;
 	}
