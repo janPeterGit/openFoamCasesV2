@@ -1,0 +1,162 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     simpleFoam;
+
+//startFrom       startTime;
+startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         1717;
+
+deltaT          1;
+
+writeControl    adjustable;
+
+writeInterval   500;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+/*
+// Time step control
+adjustTimeStep  yes;
+maxCo           0.9;
+//maxAlphaCo      0.8;
+maxDeltaT       0.5;
+*/
+
+functions
+{
+    forcesCylinder
+    {
+        // Mandatory entries
+        type            forces;
+        libs            ("libforces.so");
+        log              yes;
+        patches         (cylinder);
+        writeControl    timeStep;
+        writeInterval   1;
+        // Optional entrie
+        // Field names
+        p               p;
+        U               U;
+        rho             rhoInf;
+        rhoInf          1000;
+        // Reference pressure [Pa]
+        pRef            101300;
+        // Include porosity effects?
+        porosity        no;
+        // Store and write volume field representations of forces and moments
+        writeFields     no;
+        // Centre of rotation for moment calculations
+        CofR            (0 0 0);
+        // Spatial data binning
+        // - extents given by the bounds of the input geometry
+        binData
+        {
+            nBin        20;
+            direction   (1 0 0);
+            cumulative  yes;
+        }
+    }
+
+
+    
+    yPlus
+    {
+        type            yPlus;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    writeTime;
+        //patches         (cylinder);
+    }
+					
+	courantNo
+	{
+		type            CourantNo;
+		libs            ("libfieldFunctionObjects.so");
+		field           phi;
+		executeControl  writeTime;
+		writeControl    writeTime;
+	}
+    
+    solverInfo
+    {
+        type            solverInfo;
+        libs            ("libutilityFunctionObjects.so");
+        fields          (p); //(".*"); 
+        writeControl    writeTime;
+        //writeResidualFields yes;
+    }
+    
+
+    wallShearStress
+    {
+        type            wallShearStress;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    writeTime;
+        patches         (cylinder);
+    }
+
+    fieldAverage1
+    {
+        type            fieldAverage;
+        libs            ("libfieldFunctionObjects.so");
+
+        writeControl    timeStep;
+        writeInterval   10;
+    
+        fields
+        (
+            U
+            {
+                mean        yes;
+                prime2Mean  no;
+                base        iteration;
+            }
+            p
+            {
+                mean        yes;
+                prime2Mean  no;
+                base        iteration;
+            }
+            k
+            {
+                mean        yes;
+                prime2Mean  no;
+                base        iteration;
+            }
+        );
+    }
+
+}
+
+// ************************************************************************* //
