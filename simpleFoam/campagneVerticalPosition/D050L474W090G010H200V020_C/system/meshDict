@@ -86,20 +86,20 @@ objectRefinements
 	{
 		type			box;
 		cellSize		0.0051;
-		centre			(0.25 0	0.0225);
+		centre			(0.25 0	0.1);
 		lengthX			1.5;
 		lengthY			0.79;
-		lengthZ			0.045;
+		lengthZ			0.2;
 	}
 
 	box02
 	{
 		type			box;
 		cellSize		0.00251;
-		centre			(0.05	0.07	0.0225);
+		centre			(0.05	0	0.1);
 		lengthX			0.9;
 		lengthY			0.65;
-		lengthZ			0.045;
+		lengthZ			0.2;
 	}
 	/*
 	cone01 // around fixation
@@ -132,14 +132,14 @@ objectRefinements
 		lengthY			0.336;
 		lengthZ			0.002;
 	}
-	
+	*/
 	
 	cone03 // around cylinder
 	{
 		type				cone;
 		cellSize			1.251E-3;// 0.00251;
-		p0				(-0.1572 0.1572 0.025); //0.2445
-		p1				(0.1572 -0.1572 0.025); //0.2445
+		p0				(0 0.246 0.125); //0.2445
+		p1				(0 -0.246 0.125); //0.2445
 		radius0	0.0325;
 		radius1 0.0325;
 	}
@@ -148,12 +148,12 @@ objectRefinements
 	{
 		type				cone;
 		cellSize			6.251E-4;// 0.00251;
-		p0				(-0.1539 0.1539 0.025); //0.2395
-		p1				(0.1539 -0.1539 0.025); //0.2395
+		p0				(0 0.242 0.125); //0.2395
+		p1				(0 -0.242 0.125); //0.2395
 		radius0	0.0275;
 		radius1 0.0275;
 	}
-	*/
+	
 	
 }
 
@@ -196,7 +196,7 @@ boundaryLayers
 	
 }
 */
-
+/*
 localRefinement
 {
 	
@@ -219,9 +219,9 @@ localRefinement
 //	   //refinementThickness  0.01; 
 //	   cellSize 5.1E-3;
 //	}
-//	*/
+//	
 }
-
+*/
 
 
 renameBoundary
