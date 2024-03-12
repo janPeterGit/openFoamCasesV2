@@ -24,7 +24,7 @@ rm -f log*
 
 runApplication cartesianMesh
 runApplication checkMesh -writeAllFields -writeSets vtk
-runApplication postProcess -func writeCellCentres
+#runApplication postProcess -func writeCellCentres
 
 rm -f 0/C
 rm -f constant/C
@@ -55,7 +55,7 @@ runApplication mpirun -np 24 simpleFoam -parallel
 
 rm -f log.reconstructPar
 runApplication reconstructPar -latestTime
-rm -r proc*
+#rm -r proc*
 
-#runApplication postProcess -func "flowRatePatch(name=inlet)" -latestTime
+runApplication postProcess -func "flowRatePatch(name=inlet)" -latestTime
 #---
