@@ -2,11 +2,11 @@
 cd "${0%/*}" || exit                                # Run from this directory
 . ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
 
-#runApplication cartesianMesh
+runApplication cartesianMesh
 
 killall simpleFoam
 
-#cp system/simpleTemplate/controlDict system/controlDict
+cp system/simpleTemplate/controlDict system/controlDict
 cp system/simpleTemplate/fvSchemes system/fvSchemes
 cp system/simpleTemplate/fvSolution system/fvSolution
 
@@ -25,7 +25,7 @@ runApplication mpirun -np 24 simpleFoam -parallel
 
 rm -f log.reconstructPar
 runApplication reconstructPar -latestTime
-rm -r proc*
+#rm -r proc*
 
 runApplication postProcess -func "flowRatePatch(name=inlet)" -latestTime
 #------------------------------------------------------------------------------
