@@ -26,7 +26,7 @@ runApplication mpirun -np 24 pimpleFoam -parallel
 #runApplication paraFoam &
 
 rm -f log.reconstructPar
-runApplication reconstructPar -latestTime
+runApplication reconstructPar #-latestTime
 #rm -r proc*
 
 #------------------------------------------------------------------------------
