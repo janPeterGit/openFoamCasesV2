@@ -7,16 +7,16 @@ set ylabel "Total Force X (total_x)"
 set grid
 
 # Definieren Sie den Pfad zur Datenquelle
-datafile = 'postProcessing/forcesCylinder/0/force.dat'
+datafile = 'postProcessing/forcesCylinder/2600/force.dat'
 
 # Plot-Befehl
-# plot "< awk 'NR>2 {print $1, substr($2, 2, length($2)-2)}' ".datafile using 1:2 with lines title 'Total X'
+plot "< awk 'NR>2 {print $1, substr($2, 2, length($2)-2)}' ".datafile using 1:2 with lines title 'Total X'
 
 # Anzahl der zu plottenden Zeitschritte
-last_steps = 1000
+#last_steps = 1000
 
 # Plot-Befehl unter Verwendung von 'tail' um nur die letzten 1000 Zeitschritte zu erhalten
-plot "< tail -n ".(last_steps + 2)." ".datafile." | awk 'NR>2 {print $1, substr($2, 2, length($2)-2)}'" using 1:2 with lines title 'Total X'
+#plot "< tail -n ".(last_steps + 2)." ".datafile." | awk 'NR>2 {print $1, substr($2, 2, length($2)-2)}'" using 1:2 with lines title 'Total X'
 
-pause 1
+pause 10
 reread

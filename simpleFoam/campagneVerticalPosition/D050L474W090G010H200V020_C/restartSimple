@@ -2,10 +2,10 @@
 cd "${0%/*}" || exit                                # Run from this directory
 . ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
 
-rm -r proc*
+#rm -r proc*
 
-rm -f log.decomposePar
-runApplication decomposePar
+#rm -f log.decomposePar
+#runApplication decomposePar
 
 rm -f log.mpirun
 runApplication mpirun -np 24 simpleFoam -parallel
@@ -13,4 +13,4 @@ runApplication mpirun -np 24 simpleFoam -parallel
 
 rm -f log.reconstructPar
 runApplication reconstructPar
-rm -r proc*
+#rm -r proc*
