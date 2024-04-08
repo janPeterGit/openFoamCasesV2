@@ -1,0 +1,75 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1906                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      p_rgh;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#include        "include/initialConditions"
+
+dimensions      [1 -1 -2 0 0 0 0];
+
+internalField   uniform 0; // initially atmospheric pressure in the entire domain
+						   // incompressible solver -> relative pressure so "0" can be used instead of "1 bar" 
+
+boundaryField
+{
+    /*
+    inlet
+    {
+        type            fixedFluxPressure; //This boundary condition adjusts the pressure gradient such 
+		value           uniform 0;		   //that the flux on the boundary is that specified by the velocity boundary condition
+    }
+    */								   // value uniform 0 ist just a placeholder without affecting the simulation	
+    inlet
+    {
+        type            zeroGradient;
+    }
+
+    outlet
+    {
+        type            fixedValue;
+        value           uniform 0;
+    }
+
+    /*
+	outletWater
+    {
+        type            totalPressure;     	//!
+        p0           	uniform $pressureHeight;		//  
+	}					//für 0.55			   incompressible: p_patch = p_0 - 0.5*|U|^2   vereinfacht (nicht vollständig!!)
+											// p0 is the total pressure, U ist the local velocity, "-" because U points in the opposite direction of the patch
+													
+	outletAir
+    {
+        type            totalPressure;														
+        p0         		uniform 0;											
+    }
+	*/
+
+	top
+    {
+        type            totalPressure;						
+        p0         		uniform 0;											
+    }
+	
+	"(bottom|frontAndBack|obstacle)"
+    {
+        type            fixedFluxPressure;
+        value           uniform 0;
+    }
+	
+	
+   
+}
+
+// ************************************************************************* //

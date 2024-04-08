@@ -1,0 +1,16 @@
+solid outlet
+facet normal 1.000000 0.000000 0.000000
+outer loop
+vertex 20.000000 -10.000000 6.818394
+vertex 20.000000 -10.000000 2.229316
+vertex 20.000000 10.000000 2.229316
+endloop
+endfacet
+facet normal 1.000000 0.000000 0.000000
+outer loop
+vertex 20.000000 -10.000000 6.818394
+vertex 20.000000 10.000000 2.229316
+vertex 20.000000 10.000000 6.818394
+endloop
+endfacet
+solid outlet
