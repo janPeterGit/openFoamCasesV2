@@ -55,4 +55,4 @@ vertex 20.000000 -10.000000 0.000000
 vertex 20.000000 -10.000000 6.818394
 endloop
 endfacet
-solid frontAndBack
+endsolid frontAndBack

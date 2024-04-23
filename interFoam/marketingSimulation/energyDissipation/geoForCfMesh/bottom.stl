@@ -55,4 +55,4 @@ vertex 10.000000 -10.000000 0.000000
 vertex -1.636237 -10.000000 0.000000
 endloop
 endfacet
-solid bottom
+endsolid bottom

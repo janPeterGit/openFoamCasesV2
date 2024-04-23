@@ -26,9 +26,9 @@ rm -f log.mpirun
 runApplication mpirun -np 24 interFoam -parallel
 #runApplication paraFoam &
 
-rm -f log.reconstructPar
-runApplication reconstructPar -latestTime
-rm -r proc*
+#rm -f log.reconstructPar
+#runApplication reconstructPar -latestTime
+#rm -r proc*
 
-runApplication postProcess -func "flowRatePatch(name=inlet)" -latestTime
+#runApplication postProcess -func "flowRatePatch(name=inlet)" -latestTime
 #------------------------------------------------------------------------------

@@ -27,4 +27,4 @@ vertex 20.000000 -10.000000 6.818394
 vertex 20.000000 10.000000 6.818394
 endloop
 endfacet
-solid top
+endsolid top

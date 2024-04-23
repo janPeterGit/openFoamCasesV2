@@ -58,7 +58,7 @@ boundaryField
         value           uniform (0 0 0);
     }
 	
-	"(bottom|frontAndBack|obstacle)"
+	"(frontAndBack|obstacle)"
     {
         type            noSlip;			// This boundary condition fixes the velocity to zero at walls
     }

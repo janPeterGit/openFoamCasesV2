@@ -60,6 +60,7 @@ boundaryField
         type            nutkWallFunction; 
 	    value		    uniform 0;
     }
+    /*
     bottom
     {
         type            nutkWallFunction; 
@@ -69,8 +70,9 @@ boundaryField
 	    value		    uniform 0;
         Ks              uniform 0;//1.8e-3;
         Cs              uniform 1;
-        */
+        
     }
+    */
 
 }
 

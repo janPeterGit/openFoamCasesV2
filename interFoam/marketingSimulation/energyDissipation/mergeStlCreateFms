@@ -9,7 +9,7 @@ rm -f log*
 rm -f merged*
 rm -f *.fms
 
-cat flume* cylinder* >> merged.stl
+cat front* inlet* outlet* top* obstacle* >> merged.stl
 echo "STL merged"
 ls
 

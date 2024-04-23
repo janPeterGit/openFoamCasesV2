@@ -59,7 +59,7 @@ boundaryField
         value           $internalField; // später hinzugefügt, testen?
     }    
 	
-	"(bottom|frontAndBack|obstacle)"
+	"(frontAndBack|obstacle)"
     {
         type            omegaWallFunction;
         value           $internalField;

@@ -13,4 +13,4 @@ vertex -20.000000 10.000000 8.000000
 vertex -20.000000 10.000000 13.508696
 endloop
 endfacet
-solid inlet
+endsolid inlet

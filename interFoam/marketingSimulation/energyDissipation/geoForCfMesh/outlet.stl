@@ -13,4 +13,4 @@ vertex 20.000000 10.000000 2.229316
 vertex 20.000000 10.000000 6.818394
 endloop
 endfacet
-solid outlet
+endsolid outlet
