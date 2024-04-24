@@ -31,6 +31,17 @@ regions
             volVectorFieldValue U (0 0 0)
             volScalarFieldValue alpha.water 1
         );
+
+    }
+    boxToCell
+    {
+        box (-4 -10 0) (20 10 2.7);
+        fieldValues
+        (
+            volVectorFieldValue U (0 0 0)
+            volScalarFieldValue alpha.water 1
+        );
+        
     }
     /*
     boxToCell

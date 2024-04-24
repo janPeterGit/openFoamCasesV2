@@ -18,9 +18,9 @@ FoamFile
 
 surfaceFile "geoForCfMesh/merged.fms";
 
-minCellSize 0.1;
+minCellSize 0.081;
 
-maxCellSize 0.1;
+maxCellSize 0.081;
 
 //boundaryCellSize 0.01;
 
@@ -30,10 +30,10 @@ localRefinement
 	
 	"obstacle.*"
 	{
-       //additionalRefinementLevels 5;
+       additionalRefinementLevels 1;
 	   //refinementThickness  0.0251; 
 	   //cellSize 2.501E-3; //6.251E-4;
-	   cellSize 0.051; //6.251E-4;
+   		//cellSize 0.0751; //6.251E-4;
 	}
 	
 	/*
@@ -48,8 +48,8 @@ localRefinement
        //additionalRefinementLevels 5;
 	   //refinementThickness  0.01; 
 	   cellSize 5.1E-3;
-	}
-	*/
+	}*/
+	
 }
 
 /*
